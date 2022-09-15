@@ -41,9 +41,9 @@ Student Number: 20229558
 
 Team Member #2:
 
-Name:
+Name: Jeevan Narewal
 
-Student Number:
+Student Number: 20214920
 
 Team Member #3:
 
