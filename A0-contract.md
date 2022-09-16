@@ -53,6 +53,6 @@ Student Number: 20214504
 
 Team Member #4:
 
-Name:
+Name: Ash Taraghi
 
-Student Number:
+Student Number: 20223452
