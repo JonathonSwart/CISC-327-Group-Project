@@ -47,9 +47,9 @@ Student Number: 20214920
 
 Team Member #3:
 
-Name:
+Name: Luca Galati
 
-Student Number:
+Student Number: 20214504
 
 Team Member #4:
 
