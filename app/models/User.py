@@ -23,5 +23,7 @@ class User(db.Model):
     is_host = db.Column(db.Boolean, default=False)
     
     def __repr__(self):
-        """Returns the class representation in string format."""
+        """
+        Returns the class representation in string format.
+        """
         return '<User %r>' % self.username
