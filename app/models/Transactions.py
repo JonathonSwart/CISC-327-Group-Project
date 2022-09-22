@@ -13,7 +13,7 @@ class PaymentInfo(db.Model):
     cardholder = db.Column(db.String(60), nullable=False)
     card_number = db.Column(db.Integer, unique=True, nullable=False)
     expiry_date = db.Column(db.Integer, nullable=False)
-    CVV = db.Column(db.Integer, unique=True, nullable=False)
+    CVV = db.Column(db.Integer, nullable=False)
     balance = db.Column(db.Integer, nullable=False, default=0.00)
 
     def __repr__(self):
