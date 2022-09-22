@@ -11,6 +11,7 @@ class Reviews(db.Model):
     inside of the sqlite database. All the attributes are below, 
     the unique ones and not nullables are specified
     """
+
     id = db.Column(db.Integer, primary_key=True)
     listing_id=db.Column(db.Integer, unique=True, nullable=False)
     username = db.Column(db.String(80), unique=True, nullable=False)
