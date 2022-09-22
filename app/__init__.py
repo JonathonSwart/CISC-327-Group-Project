@@ -6,6 +6,7 @@ database.
 from flask import Flask
 from models.model_handler import db
 from models.User import User
+from models.Reviews import Reviews
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
