@@ -9,7 +9,7 @@ class Listing(db.Model):
     the sqlite database. It specifies which attributes are unique, what
     data goes into each field and any other notable properties.
     """
-    
+
     id = db.Column(db.Integer, primary_key=True)
     listing_title = db.Coloumn(db.String(), nullable=False)
     username = db.Coloumn(db.String(), unique=True, nullable=False)
