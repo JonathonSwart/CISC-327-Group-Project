@@ -11,24 +11,24 @@ class Listing(db.Model):
     """
 
     id = db.Column(db.Integer, primary_key=True)
-    listing_title = db.Coloumn(db.String(), nullable=False)
-    username = db.Coloumn(db.String(), unique=True, nullable=False)
-    username_notes = db.Coloumn(db.String(), unique=False)
+    listing_title = db.Column(db.String(), nullable=False)
+    username = db.Column(db.String(), unique=True, nullable=False)
+    username_notes = db.Column(db.String(), unique=False)
     bedroom_count = db.Column(db.Integer, nullable=False)
     bed_count = db.Column(db.Integer, nullable=False)
     bath_count = db.Column(db.Integer, nullable=False)
     star_rating = db.Column(db.Integer, nullable=False)
-    reviews = db.Column(db.json, nullable=False)  # Must figure out how to add list of strings to database
-    country = db.Coloumn(db.String(), nullable=False)
-    province_or_state = db.Coloumn(db.String(), nullable=False)
-    city = db.Coloumn(db.String(), nullable=False)
-    street = db.Coloumn(db.String(), nullable=False)
-    postal_code = db.Coloumn(db.String(), nullable=False)
-    gallery = db.Coloumn(db.json(), nullable=False)  # Must figure out how to add list of pics to database
-    listing_notes = db.Coloumn(db.String(), nullable=False)
-    availability = db.Column(db.json, nullable=False)  # Must figure out how to add calendar to database
+    # reviews = db.Column(db.json, nullable=False)  # Must figure out how to add list of strings to database
+    country = db.Column(db.String(), nullable=False)
+    province_or_state = db.Column(db.String(), nullable=False)
+    city = db.Column(db.String(), nullable=False)
+    street = db.Column(db.String(), nullable=False)
+    postal_code = db.Column(db.String(), nullable=False)
+    # gallery = db.Column(db.json(), nullable=False)  # Must figure out how to add list of pics to database
+    listing_notes = db.Column(db.String(), nullable=False)
+    # availability = db.Column(db.json, nullable=False)  # Must figure out how to add calendar to database
     nightly_cost = db.Column(db.Integer, primary_key=True)
-    amenities = db.Coloumn(db.String(), nullable=False)  # Must figure out how to add list of strings to database
+    # amenities = db.Column(db.String(), nullable=False)  # Must figure out how to add list of strings to database
 
     
     def __repr__(self):
