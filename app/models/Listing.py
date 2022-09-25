@@ -18,17 +18,21 @@ class Listing(db.Model):
     bed_count = db.Column(db.Integer, nullable=False)
     bath_count = db.Column(db.Integer, nullable=False)
     star_rating = db.Column(db.Integer, nullable=False)
-    # reviews = db.Column(db.json, nullable=False)  # Must figure out how to add list of strings to database
+    # reviews = db.Column(db.json, nullable=False)
+    # # Must figure out how to add list of strings to database
     country = db.Column(db.String(), nullable=False)
     province_or_state = db.Column(db.String(), nullable=False)
     city = db.Column(db.String(), nullable=False)
     street = db.Column(db.String(), nullable=False)
     postal_code = db.Column(db.String(), nullable=False)
-    # gallery = db.Column(db.json(), nullable=False)  # Must figure out how to add list of pics to database
+    # gallery = db.Column(db.json(), nullable=False) 
+    # Must figure out how to add list of pics to database
     listing_notes = db.Column(db.String(), nullable=False)
-    # availability = db.Column(db.json, nullable=False)  # Must figure out how to add calendar to database
+    # availability = db.Column(db.json, nullable=False)
+    # Must figure out how to add calendar to database
     nightly_cost = db.Column(db.Integer, primary_key=True)
-    # amenities = db.Column(db.String(), nullable=False)  # Must figure out how to add list of strings to database
+    # amenities = db.Column(db.String(), nullable=False)  
+    # Must figure out how to add list of strings to database
 
     
     def __repr__(self):
