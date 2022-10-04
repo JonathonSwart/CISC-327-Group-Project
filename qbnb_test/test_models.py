@@ -1,3 +1,4 @@
+"""
 from qbnb.models import register, login
 
 
@@ -25,3 +26,4 @@ def test_r2_1_login():
 
     user = login('test0@test.com', 1234567)
     assert user is None
+"""
