@@ -2,7 +2,9 @@
 Module that structures different users Review data/tabel
 """
 
+from time import timezone
 from .model_handler import db
+from datetime import datetime
 
 
 class Reviews(db.Model):
@@ -11,23 +13,19 @@ class Reviews(db.Model):
     inside of the sqlite database. All the attributes are below, 
     the unique ones and not nullables are specified
     """
-
+    # entinties to have in our Review class
     id = db.Column(db.Integer, primary_key=True)
-    listing_id=db.Column(db.Integer, unique=True, nullable=False)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-    email = db.Column(db.Boolean, unique=True, nullable=False)
-    image_url  = db.Column(db.String(200), unique=True, nullable=False)
-    review_date = db.Column(db.DateTime, nullable=False)
-    rating = db.Column(db.Integer, unique=True, nullable=False)
-    verified_guest = db.Column(db.Boolean, unique=True, default=False)
-    review_title = db.Column(db.String(100), unique=True)
+    user_id = db.Column(db.Integer, nullable=False, unique=True)
+    listing_id= db.Column(db.Integer, unique=True, nullable=False)
+    review_text = db.Column(db.String(500), unique=True, nullable=False)
+    date = db.Column(db.DateTime, nullable=False)
     
-
-    #picture = db.Column(db.)
 
     def __repr__(self):
         """
         Returns the class representation in string format.
         """
-        return '<Us er %r>' % self.username
+        return f"Reviews('{self.id}', User id: '{self.user_id},\
+        listing id '{self.listing_id}, reveiw_text '{self.review_text} \
+        date '{self.date}')"
   
