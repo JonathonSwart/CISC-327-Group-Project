@@ -10,10 +10,10 @@ class Booking(db.Model):
     stored in the database."""
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, Unique=True, Nullable=False)
-    listing_id = db.Column(db.Integer, Unique=True, Nullable=False)
-    price = db.Column(db.Integer, Nullable=False)
-    date = db.Column(db.DateTime, Nullable=False)
+    user_id = db.Column(db.Integer, unique=True, nullable=False)
+    listing_id = db.Column(db.Integer, unique=True, nullable=False)
+    price = db.Column(db.Integer, nullable=False)
+    date = db.Column(db.DateTime, nullable=False)
 
     def __repr__(self):
         """Returns the class representation in string format."""

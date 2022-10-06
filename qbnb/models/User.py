@@ -12,15 +12,12 @@ class User(db.Model):
     """
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    city = db.Column(db.String(80), nullable=False)
-    country = db.Column(db.String(80), nullable=False)
-    street = db.Column(db.String(500), nullable=False)
-    postal_code = db.Column(db.String(80), nullable=False)
-    phone_number = db.Column(db.Integer, unique=True, nullable=False)
-    birthday = db.Column(db.DateTime, nullable=False)
-    is_host = db.Column(db.Boolean, default=False)
+    password = db.Column(db.String(20), nullable=False)
+    billing_address = db.Column(db.String(280))
+    postal_code = db.Column(db.String(6))
+    balance = db.Column(db.Integer)
+    user_name = db.Column(db.String(19), unique=True, nullable=False)
     
     def __repr__(self):
         """
