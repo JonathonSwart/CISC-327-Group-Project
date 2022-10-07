@@ -13,13 +13,13 @@ class Reviews(db.Model):
     inside of the sqlite database. All the attributes are below, 
     the unique ones and not nullables are specified
     """
+
     # entinties to have in our Review class
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, nullable=False, unique=True)
-    listing_id= db.Column(db.Integer, unique=True, nullable=False)
+    listing_id = db.Column(db.Integer, unique=True, nullable=False)
     review_text = db.Column(db.String(500), unique=True, nullable=False)
     date = db.Column(db.DateTime, nullable=False)
-    
 
     def __repr__(self):
         """
@@ -28,4 +28,3 @@ class Reviews(db.Model):
         return f"Reviews('{self.id}', User id: '{self.user_id},\
         listing id '{self.listing_id}, reveiw_text '{self.review_text} \
         date '{self.date}')"
-  

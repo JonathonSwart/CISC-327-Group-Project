@@ -4,6 +4,7 @@ Module that declares the structure for a Listing data model/table.
 
 from .model_handler import db
 
+
 class Listing(db.Model):
     """The structure of how each Listing entry will be stored inside of 
     the sqlite database. It specifies which attributes are unique, what
@@ -20,3 +21,4 @@ class Listing(db.Model):
     def __repr__(self):
         """Returns the class representation in string format."""
         return '<Listing: %r>' % self.title
+        
