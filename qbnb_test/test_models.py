@@ -1,3 +1,4 @@
+import __init__
 from qbnb.backend_functions import login, register
 from conftest import pytest_sessionstart, pytest_sessionfinish
 
