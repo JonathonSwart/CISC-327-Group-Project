@@ -17,8 +17,6 @@ class Listing(db.Model):
     nightly_cost = db.Column(db.Integer, primary_key=True, nullable=False)
     last_modified_date = db.Column(db.String(), nullable=False)
 
-    
     def __repr__(self):
         """Returns the class representation in string format."""
         return '<Listing: %r>' % self.title
-        
