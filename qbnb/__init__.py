@@ -4,11 +4,11 @@ database.
 """
 
 from flask import Flask
-from models.model_handler import db
-from models.User import User
-from models.Reviews import Reviews
-from models.Listing import Listing
-from models.Booking import Booking
+from .models.model_handler import db
+from .models.User import User
+from .models.Reviews import Reviews
+from .models.Listing import Listing
+from .models.Booking import Booking
 
 
 app = Flask(__name__)
