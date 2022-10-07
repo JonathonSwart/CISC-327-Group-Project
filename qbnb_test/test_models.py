@@ -1,4 +1,3 @@
-import __init__
 from qbnb.backend_functions import login, register
 from conftest import pytest_sessionstart, pytest_sessionfinish
 
@@ -96,4 +95,3 @@ if __name__ == '__main__':
     """
     test_r2_1_user_login()
     pytest_sessionfinish()
-    
