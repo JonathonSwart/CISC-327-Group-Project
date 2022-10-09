@@ -87,7 +87,8 @@ def test_r4_1_create_listing():
     assert create_listing(
         "House title!", "this is the house description", 1000, 1) is False
     # title > 80 characters
-    assert create_listing("House title is super long longer than 80 characters long so this should be false too!",
+    assert create_listing("House title is super long longer than 80 characters long\
+       so this should be false too!",
                           "this is the house description", 1000, 1) is False
     # title has spaces as prefix
     assert create_listing(
