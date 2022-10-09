@@ -1,3 +1,3 @@
-'''
-an init file is required for this folder to be considered as a module
-'''
+import sys
+from os import path
+sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))

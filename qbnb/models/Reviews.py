@@ -13,6 +13,7 @@ class Reviews(db.Model):
     inside of the sqlite database. All the attributes are below, 
     the unique ones and not nullables are specified
     """
+
     # entinties to have in our Review class
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, nullable=False, unique=True)
