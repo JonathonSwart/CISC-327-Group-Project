@@ -89,7 +89,8 @@ def test_r4_1_create_listing():
     assert create_listing(
         "House title!", "this is the house description", 1000, 1) is False
     # title > 80 characters
-    assert create_listing("House title is super long longer than 80 characters\
+    assert create_listing("House title is super long\
+       longer than 80 characters\
        long so this should be false too!",
                           "this is the house description", 1000, 1) is False
     # title has spaces as prefix
@@ -119,33 +120,39 @@ def test_r4_2_create_listing():
                               nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
                                 nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
                                 nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
-                                  nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
+                                  nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
                                   nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
-                                    nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
-                              nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
+                                    nnnnnnnnnnnnnnnnnnnnnnnnnnnn\
+                                      nnnnnnnnnnnnnnnnnnnnnn\
+                              nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
                                 nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
                                 nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
-                                  nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
+                                  nnnnnnnnnnnnnnnnnnnnnnnnnnn\
+                                    nnnnnnnnnnnnnnnnnnnnn\
                                   nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
-                                    nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
+                                    nnnnnnnnnnnnnnnnnnnnnnnnnn\
+                                      nnnnnnnnnnnnnnnnnnnnnnnnnn\
                               nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
                                 nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
                                 nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
                                   nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
                                   nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
-                                    nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
+                                    nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
                               nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
                                 nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
                                 nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
-                                  nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
+                                  nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
                                   nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
-                                    nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
+                                    nnnnnnnnnnnnnnnnnnnnn\
+                                      nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
                               nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
                                 nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
                                 nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
-                                  nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
+                                  nnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
+                                    nnnnnnnnnnnnnnnnnnnnnnn\
                               nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
-                                nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
+                                nnnnnnnnnnnnnnnnnnnnnn\
+                                  nnnnnnnnnnnnnnnnnnnnnnnnnn\
                               ", 1000, 2) is False
     # title is longer than description
     assert create_listing(
@@ -158,7 +165,8 @@ def test_r4_2_create_listing():
 
 def test_r4_3_create_listing():
     """ 
-    this function will check r4-5: if the price range is between 1 - 10,000 dollars
+    this function will check r4-5: if 
+    the price range is between 1 - 10,000 dollars
     """
     # too small price
     assert create_listing(
@@ -173,7 +181,8 @@ def test_r4_3_create_listing():
 
 def test_r4_4_create_listing():
     """ 
-    This function will check r4-6 to see if the date is within the required range 
+    This function will check r4-6 to 
+    see if the date is within the required range 
     """
     # too early of date
     assert create_listing(
