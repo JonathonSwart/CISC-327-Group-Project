@@ -101,15 +101,15 @@ def test_r4_1_create_listing():
 
 def test_r4_2_create_listing():
     '''
-    Testing R4-3 and R4-4. description must be between 20 - 2000 characters long and longer
-    than title description
+    Testing R4-3 and R4-4. description must be between 20 - 2000 
+    characters long and longer than title description
     '''
     # too short descrption
     assert create_listing(
         "House title!", "description", 1000, 2) is False
     # really long description
-    assert create_listing("House title is super long longer than 80 characters\
-       long so this should be false too!",
+    assert create_listing("House title is super long longer than\
+       80 characters \long so this should be false too!",
                           "this is the house descriptionnnnnnnnnnnnnnnnnnnnnn\
                             nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
                             nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn\
@@ -149,7 +149,8 @@ def test_r4_2_create_listing():
                               ", 1000, 2) is False
     # title is longer than description
     assert create_listing(
-        "House title that is really long but valid still", "this is the house description", 1000, 2) is False
+        "House title that is really long but valid still",
+        "this is the house description", 1000, 2) is False
     # normal description
     assert create_listing(
         "House title2", "this is the house description", 1000, 2) is True
@@ -176,18 +177,22 @@ def test_r4_4_create_listing():
     """
     # too early of date
     assert create_listing(
-        "House title4", "this is the house description", 12, 4, datetime(2005, 1, 1)) is False
+        "House title4", "this is the house description", 12, 4,
+        datetime(2005, 1, 1)) is False
     # too late of date
     assert create_listing(
-        "House title4", "this is the house description", 2000, 4, datetime(2030, 1, 1)) is False
+        "House title4", "this is the house description",
+        2000, 4, datetime(2030, 1, 1)) is False
     # within correct date range
     assert create_listing(
-        "House title4", "this is the house description", 5000, 4, datetime(2023, 1, 1)) is True
+        "House title4", "this is the house description", 5000, 4,
+        datetime(2023, 1, 1)) is True
 
 
 def test_r4_5_create_listing():
     """
-     this function will check r4-7 and r4-8: the owner must have valid username and account
+     this function will check r4-7 and r4-8: the owner 
+     must have valid username and account
     and each posting on the database must have a unique title
     """
     # Checking is user has valid account made and valid email
