@@ -11,7 +11,8 @@ import re
 # listing functions
 
 
-def create_listing(title, description,  nightly_cost, owner_id, date=datetime.now()):
+def create_listing(title, description,  nightly_cost,
+                   owner_id, date=datetime.now()):
     '''
     Create a listing with specific requirments
     '''
@@ -19,12 +20,14 @@ def create_listing(title, description,  nightly_cost, owner_id, date=datetime.no
     # as suffix or prefix
 
     title_regex = re.compile("^[a-zA-Z0-9 ]*$")
-    if len(title) == 0 or len(title) > 80 or (not (re.fullmatch(title_regex, title)))\
+    if len(title) == 0 or len(title) > 80 or \
+        (not (re.fullmatch(title_regex, title)))\
             or title[0] == " " or title[-1] == " ":
         return False
     # if the description if shorter than the title it's not valid
     # if length is less than 20 characters or longer than 2000, it's not valid
-    if (len(description) < len(title)) or (len(description) < 20) or (len(description) > 2000):
+    if (len(description) < len(title)) or \
+            (len(description) < 20) or (len(description) > 2000):
         return False
     # nightly cost has to be in range 10 - 10000
     if (nightly_cost < 10) or (nightly_cost > 10000):
@@ -49,7 +52,8 @@ def create_listing(title, description,  nightly_cost, owner_id, date=datetime.no
         return False
 
     listing1 = Listing(title=title, description=description,
-                       nightly_cost=nightly_cost, owner_id=owner_id, last_modified_date=date)
+                       nightly_cost=nightly_cost, owner_id=owner_id,
+                       last_modified_date=date)
     # add it to the current database session
     db.session.add(listing1)
 
