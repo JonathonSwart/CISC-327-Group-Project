@@ -81,8 +81,10 @@ def test_r2_1_user_login():
 
 
 def test_r4_1_create_listing():
-    '''Testing R4-1 and R4-2. Title cannot have spaces as prefix or suffix
-    and should be alhpanumeric and no longer than 80 characters'''
+    '''
+    Testing R4-1 and R4-2. Title cannot have spaces as prefix or suffix
+    and should be alhpanumeric and no longer than 80 characters
+    '''
     # exclamation makes it not alphanumeric
     assert create_listing(
         "House title!", "this is the house description", 1000, 1) is False
@@ -98,8 +100,10 @@ def test_r4_1_create_listing():
 
 
 def test_r4_2_create_listing():
-    '''Testing R4-3 and R4-4. description must be between 20 - 2000 characters long and longer
-    than title description'''
+    '''
+    Testing R4-3 and R4-4. description must be between 20 - 2000 characters long and longer
+    than title description
+    '''
     # too short descrption
     assert create_listing(
         "House title!", "description", 1000, 2) is False
@@ -152,7 +156,9 @@ def test_r4_2_create_listing():
 
 
 def test_r4_3_create_listing():
-    """ this function will check r4-5: if the price range is between 1 - 10,000 dollars"""
+    """ 
+    this function will check r4-5: if the price range is between 1 - 10,000 dollars
+    """
     # too small price
     assert create_listing(
         "House title3", "this is the house description", 5, 3) is False
@@ -165,7 +171,9 @@ def test_r4_3_create_listing():
 
 
 def test_r4_4_create_listing():
-    """ This function will check r4-6 to see if the date is within the required range """
+    """ 
+    This function will check r4-6 to see if the date is within the required range 
+    """
     # too early of date
     assert create_listing(
         "House title4", "this is the house description", 12, 4, datetime(2005, 1, 1)) is False
@@ -178,8 +186,10 @@ def test_r4_4_create_listing():
 
 
 def test_r4_5_create_listing():
-    """ this function will check r4-7 and r4-8: the owner must have valid username and account
-    and each posting on the database must have a unique title"""
+    """
+     this function will check r4-7 and r4-8: the owner must have valid username and account
+    and each posting on the database must have a unique title
+    """
     # Checking is user has valid account made and valid email
     print("this")
     assert create_listing(

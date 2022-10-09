@@ -12,7 +12,9 @@ import re
 
 
 def create_listing(title, description,  nightly_cost, owner_id, date=datetime.now()):
-    '''Create a listing with specific requirments '''
+    '''
+    Create a listing with specific requirments
+    '''
     # checking to see if title is valid length and all alphanumeric and doesn't have space
     # as suffix or prefix
 
