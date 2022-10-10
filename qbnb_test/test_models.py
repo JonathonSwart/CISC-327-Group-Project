@@ -214,6 +214,7 @@ def test_r4_5_create_listing():
     and each posting on the database must have a unique title
     """
     # Checking is user has valid account made and valid email
+    print("this")
     assert create_listing(
         # no onwer_id 16 so should be false
         "House title5", "this is the house description", 1000, 160) is False
@@ -223,68 +224,6 @@ def test_r4_5_create_listing():
     # valid owner_id, email, and unique title name
     assert create_listing(
         "House title5", "this is the house description", 5000, 1) is True
-
-
-def test_r3_1_update_profile():
-    """
-    Testing R3-1: A user is only able to update his/her user name, 
-    user email, billing address, and postal code.
-    """
-
-    assert update_profile(1, None, None, None, None) is True
-    assert update_profile(1, "Jonathon Swart", "19js154@queensu.ca",
-                          None, None) is True
-    assert update_profile(2, None, None, "100 ontario st", None) is True
-    assert update_profile(3, None, None, None, "K7L1H6") is True
-    assert update_profile(None, "Ash", None, None, None) is False
-
-
-def test_r3_2and3_update_profile():
-    """
-    Test R3-2 and R3-3: postal code should be non-empty, 
-    alphanumeric-only, and no special characters such as !. Postal code
-    has to be a valid Canadian postal code.
-    """
-
-    assert update_profile(1, None, None, None, "K7L2T4") is True
-    assert update_profile(2, None, None, None, "KKKKKK") is False
-    assert update_profile(3, None, None, None, "K7L3N9L2H") is False
-
-
-def test_r3_4_update_profile():
-    """
-    Test R3_4: User name should be non-empty, alphanumeric-only, and 
-    no special characters such as !.
-    """
-
-    assert update_profile(1, "Ash K", None, None, None) is True
-    assert update_profile(2, "Jonathon is the best!", None, None, None)\
-        is False
-    assert update_profile(4, "", None, None, None) is False
-    assert update_profile(5, "jonathon@swart", None, None, None) is False
-
-
-def test_r5_1_update_listing():
-    """
-    Test R5-1 & R5-3: One can update all attributes of the listing, except owner_id 
-    and last_modified_date. last_modified_date should be updated when the update 
-    operation is successful.
-    """
-    assert update_listing(1, "New house title", "This is the new \
-    house description", 1001) is True
-    assert update_listing(2, "New house title", None, None) is True
-    assert update_listing(
-        3, None, "This is the new house Description", None) is True
-    assert update_listing(4, None, None, 5000) is True
-
-
-def test_r5_2_update_listing():
-    """
-    Test R5-2 & R5-3: Price can be only increased but cannot be decreased.
-    last_modified_date should be updated when the update operation is successful.
-    """
-    assert update_listing(4, None, None, 4000) is False
-    assert update_listing(4, None, None, 6000) is True
 
 
 if __name__ == '__main__':
@@ -308,18 +247,4 @@ if __name__ == '__main__':
     test_r4_3_create_listing()
     test_r4_4_create_listing()
     test_r4_5_create_listing()
-    """
-    Testing update user profile requirements.
-    """
-    test_r3_1_update_profile()
-    test_r3_2and3_update_profile()
-    test_r3_4_update_profile()
-    """
-    Testing requirements outlined for update_listing()
-    R5-4: update_listing uses the exact same code as
-    create_listing(), as a result, those requirements
-    are previously tested above.
-    """
-    test_r5_1_update_listing()
-    test_r5_2_update_listing()
     pytest_sessionfinish()
