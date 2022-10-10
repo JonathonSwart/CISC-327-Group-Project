@@ -1,6 +1,4 @@
-import sys
-from os import path
-sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
+import __init__
 from qbnb_test.conftest import pytest_sessionfinish, pytest_sessionstart
 from qbnb.backend_functions import (create_listing, login, register,
                                     update_profile)
