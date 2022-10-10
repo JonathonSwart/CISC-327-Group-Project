@@ -206,7 +206,6 @@ def test_r4_5_create_listing():
     and each posting on the database must have a unique title
     """
     # Checking is user has valid account made and valid email
-    print("this")
     assert create_listing(
         # no onwer_id 16 so should be false
         "House title5", "this is the house description", 1000, 160) is False
@@ -251,8 +250,8 @@ def test_r3_4_update_profile():
     """
 
     assert update_profile(1, "Ash K", None, None, None) is True
-    assert update_profile(2, "Jonathon is the best!", None, None, None) \
-                          is False
+    assert update_profile(2, "Jonathon is the best!", None, None, None)\
+        is False
     assert update_profile(4, "", None, None, None) is False
     assert update_profile(5, "jonathon@swart", None, None, None) is False
 

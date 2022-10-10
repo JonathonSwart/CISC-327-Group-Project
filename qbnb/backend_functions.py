@@ -1,4 +1,3 @@
-from asyncio.windows_events import NULL
 from .__init__ import db
 from .models.User import User
 from datetime import datetime
