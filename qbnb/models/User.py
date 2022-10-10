@@ -18,9 +18,9 @@ class User(db.Model):
     billing_address = db.Column(db.String(280))
     postal_code = db.Column(db.String(6))
     balance = db.Column(db.Integer)
-    
+
     def __repr__(self):
         """
         Returns the class representation in string format.
         """
-        return '<User %r>' % self.username
+        return '<User %r>' % self.user_name
