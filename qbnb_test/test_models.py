@@ -1,10 +1,10 @@
 import sys 
 from os import path
-sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))  # nopep8
-from qbnb_test.conftest import pytest_sessionfinish, pytest_sessionstart  # nopep8
-from qbnb.backend_functions import (create_listing, login, register,  # nopep8
-                                    update_profile)  # nopep8
-from datetime import datetime  # nopep8
+sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))  # noqa
+from qbnb_test.conftest import pytest_sessionfinish, pytest_sessionstart  # noqa
+from qbnb.backend_functions import (create_listing, login, register,  # noqa
+                                    update_profile)  # noqa
+from datetime import datetime  # noqa
 
 
 """
