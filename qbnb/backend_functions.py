@@ -255,7 +255,7 @@ def update_listing(listing_id, new_title, new_description, new_nightly_cost):
     else:
         title_regex = re.compile("^[a-zA-Z0-9 ]*$")
         if len(new_title) == 0 or len(new_title) > 80 or \
-            (not(re.fullmatch(title_regex, new_title))) \
+            (not (re.fullmatch(title_regex, new_title))) \
                 or new_title[0] == " " or new_title[-1] == " ":
             bool_return = False
         else:
