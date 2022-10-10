@@ -20,7 +20,4 @@ jobs:
     - name: Test with pytest
       run: |
         pip install pytest
-        import sys
-        from os import path
-        sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
         pytest qbnb_test

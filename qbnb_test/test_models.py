@@ -1,4 +1,14 @@
-import __init__
+"""
+  For some reason when we work in vscode our import statements do not work,
+  however, they work in pyCharm. To get around this issue we implemented the 
+  following fix that we need to prevent pep8 flake from checking because then 
+  that check fails everytime the code is run due to our implemented fix to
+  get both tests working.
+"""
+import sys  # nopep8
+from os import path  # nopep8
+sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))  # nopep8
+
 from qbnb_test.conftest import pytest_sessionfinish, pytest_sessionstart
 from qbnb.backend_functions import (create_listing, login, register,
                                     update_profile)
