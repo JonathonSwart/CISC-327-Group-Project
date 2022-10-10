@@ -267,9 +267,9 @@ def test_r3_4_update_profile():
 
 def test_r5_1_update_listing():
     """
-    Test R5-1 & R5-3: One can update all attributes of the listing, except owner_id 
-    and last_modified_date. last_modified_date should be updated when the update 
-    operation is successful.
+    Test R5-1 & R5-3: One can update all attributes of the listing,
+    except owner_id and last_modified_date. last_modified_date 
+    should be updated when the update operation is successful.
     """
     assert update_listing(1, "New house title", "This is the new \
     house description", 1001) is True
@@ -282,7 +282,8 @@ def test_r5_1_update_listing():
 def test_r5_2_update_listing():
     """
     Test R5-2 & R5-3: Price can be only increased but cannot be decreased.
-    last_modified_date should be updated when the update operation is successful.
+    last_modified_date should be updated when the update operation is 
+    successful.
     """
     assert update_listing(4, None, None, 4000) is False
     assert update_listing(4, None, None, 6000) is True
