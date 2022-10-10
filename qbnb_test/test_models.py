@@ -8,7 +8,7 @@ from datetime import datetime  # noqa
 
 
 """
-The reason we put no pep8 is to get around an issue relating to vscode and
+The reason we put no noqa is to get around an issue relating to vscode and
 import issues.
 """
 
