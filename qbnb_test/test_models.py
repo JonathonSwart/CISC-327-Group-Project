@@ -1,6 +1,6 @@
 import __init__
 from datetime import datetime
-from qbnb.backend_functions import login, register, create_listing
+from qbnb.backend_functions import login, register, create_listing, update_profile
 from conftest import pytest_sessionstart, pytest_sessionfinish
 
 
@@ -217,6 +217,45 @@ def test_r4_5_create_listing():
         "House title5", "this is the house description", 5000, 1) is True
 
 
+def test_r3_1_update_profile():
+  """
+  Testing R3-1: A user is only able to update his/her user name, 
+  user email, billing address, and postal code.
+  """
+
+  assert update_profile(1, None, None, None, None) is True
+  assert update_profile(1, "Jonathon Swart", "19js154@queensu.ca",
+                       None, None) is True
+  assert update_profile(2, None, None, "100 ontario st", None) is True
+  assert update_profile(3, None, None, None, "K7L1H6") is True
+  assert update_profile(None, "Ash", None, None, None) is False
+
+
+def test_r3_2and3_update_profile():
+  """
+  Test R3-2 and R3-3: postal code should be non-empty, 
+  alphanumeric-only, and no special characters such as !. Postal code
+  has to be a valid Canadian postal code.
+  """
+
+  assert update_profile(1, None, None, None, "K7L2T4") is True
+  assert update_profile(2, None, None, None, "KKKKKK") is False
+  assert update_profile(3, None, None, None, "K7L3N9L2H") is False
+
+
+def test_r3_4_update_profile():
+  """
+  Test R3_4: User name should be non-empty, alphanumeric-only, and 
+  no special characters such as !.
+  """
+
+  assert update_profile(1, "Ash K", None, None, None) is True
+  assert update_profile(2, "Jonathon is the best!", None, None, 
+                        None) is False
+  assert update_profile(4, "", None, None, None) is False
+  assert update_profile(5, "jonathon@swart", None, None, None) is False
+
+
 if __name__ == '__main__':
     pytest_sessionstart()
     """
@@ -238,4 +277,10 @@ if __name__ == '__main__':
     test_r4_3_create_listing()
     test_r4_4_create_listing()
     test_r4_5_create_listing()
+    """
+    Testing update user profile requirements.
+    """
+    test_r3_1_update_profile()
+    test_r3_2and3_update_profile()
+    test_r3_4_update_profile()
     pytest_sessionfinish()

@@ -145,3 +145,91 @@ def login(email, password):
     if len(user_data) != 1:
         return None
     return user_data[0]
+
+
+def update_profile(user_id, new_username, new_email, new_billing_address, 
+                    new_postal_code):
+    """Updates a users profile to new changes
+        Parameters:
+            user_id (integer):              The user's user id.
+            new_username (string):          The user's new user name.
+            new_email (string):             The user's new email.
+            new_billing_address (string):   The user's new billing address.
+            new_postal_code (string):       The user's new postal code.
+        Returns:
+            True if updates to user's profile are committed successfully
+            and false otherwise.
+    """
+
+    # Checks if user id was inputted
+    if (user_id == None):
+        return False
+
+    user = User.query.get(user_id)  # Get user
+    send_error = False
+
+    # Update users username
+    username_regex = re.compile(r"""^[a-zA-Z0-9][ a-zA-Z0-9]*[a-zA-Z0-9]+""")
+    if (new_username == None):
+        pass
+    else:
+        # Checks if username is valid
+        if (new_username != "" and (len(new_username) > 2 and 
+            len(new_username) < 20)):
+            if(re.fullmatch(username_regex, new_username)):
+                user.user_name = new_username
+            else:
+                send_error = True
+        else:
+            send_error = True
+
+    # Update users email
+    if (new_email == None):
+        pass
+    else:
+        email_regex = re.compile(r"""([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0
+                                      -9-]+(\.[A-Z|a-z]{2,})+""")
+        # Checks if email is valid
+        if (new_email != "" and re.fullmatch(email_regex, new_email)):
+            user.email = new_email
+
+        else:
+            send_error = True
+
+    # Update users billing address
+    if (new_billing_address == None):
+        pass
+    else:
+        # Checks if billing address is valid
+        address_regex = re.compile(r"^([0-9]+( [A-Za-z0-9]+)+)")
+        if (new_billing_address != "" and re.fullmatch(address_regex,
+            new_billing_address)):
+                user.billing_address = new_billing_address
+            
+        else:
+            send_error = True
+
+    # Update users postal code
+    postal_code_regex = re.compile(r"""^([A-Z][0-9][A-Z][0-9][A-Z][0-9])$""")
+    if (new_postal_code == None):
+        pass
+    else:
+        # Checks if postal code is valid
+        if (new_postal_code != "" and len(new_postal_code) == 6):
+            #postal_code_regex = re.compile(r"""^([A-Z][0-9][A-Z][0-9][A-Z][0-9])$""")
+            if(re.fullmatch(postal_code_regex, new_postal_code)):
+                user.postal_code = new_postal_code
+            else:
+                send_error = True
+        else:
+            send_error = True
+
+    # Commit changes
+    db.session.commit()
+
+    # Returns false so program knows function did not work
+    if (send_error == True):
+        return False
+    else:
+        return True
+
