@@ -12,6 +12,9 @@ def pytest_sessionstart():
     if os.path.exists('qbnb/db.sqlite'):
         os.remove(db_file)
         db.create_all()
+    elif os.path.exists('instance/db.sqlite'):
+        os.remove('instance/db.sqlite')
+        db.create_all()
 
 
 def pytest_sessionfinish():
