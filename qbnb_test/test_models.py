@@ -1,6 +1,7 @@
 import __init__
 from datetime import datetime
-from qbnb.backend_functions import login, register, create_listing, update_profile
+from qbnb.backend_functions import login, register, create_listing,\
+update_profile
 from conftest import pytest_sessionstart, pytest_sessionfinish
 
 
@@ -224,8 +225,8 @@ def test_r3_1_update_profile():
     """
 
     assert update_profile(1, None, None, None, None) is True
-    assert update_profile(1, "Jonathon Swart", "19js154@queensu.ca",\
-                        None, None) is True
+    assert update_profile(1, "Jonathon Swart", "19js154@queensu.ca",
+                            None, None) is True
     assert update_profile(2, None, None, "100 ontario st", None) is True
     assert update_profile(3, None, None, None, "K7L1H6") is True
     assert update_profile(None, "Ash", None, None, None) is False
@@ -250,8 +251,8 @@ def test_r3_4_update_profile():
     """
 
     assert update_profile(1, "Ash K", None, None, None) is True
-    assert update_profile(2, "Jonathon is the best!", None, None,\
-                        None) is False
+    assert update_profile(2, "Jonathon is the best!", None, None,
+                            None) is False
     assert update_profile(4, "", None, None, None) is False
     assert update_profile(5, "jonathon@swart", None, None, None) is False
 
