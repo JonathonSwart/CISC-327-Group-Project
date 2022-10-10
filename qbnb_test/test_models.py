@@ -5,7 +5,7 @@ sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 from datetime import datetime
 from qbnb.backend_functions import (login, register, create_listing,
                                     update_profile)
-from conftest import pytest_sessionstart, pytest_sessionfinish
+from qbnb_test.conftest import pytest_sessionstart, pytest_sessionfinish
 
 
 def test_r1_1_user_register():
