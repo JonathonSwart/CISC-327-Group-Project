@@ -1,10 +1,16 @@
 import sys 
 from os import path
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))  # nopep8
-from qbnb_test.conftest import pytest_sessionfinish, pytest_sessionstart 
+from qbnb_test.conftest import pytest_sessionfinish, pytest_sessionstart  # nopep8
 from qbnb.backend_functions import (create_listing, login, register, 
-                                    update_profile) 
-from datetime import datetime 
+                                    update_profile)  # nopep8
+from datetime import datetime  # nopep8
+
+
+"""
+The reason we put no pep8 is to get around an issue relating to vscode and
+import issues.
+"""
 
 
 def test_r1_1_user_register():
