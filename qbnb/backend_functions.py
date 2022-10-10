@@ -255,7 +255,7 @@ def update_listing(listing_id, new_title, new_description, new_nightly_cost):
     else:
         title_regex = re.compile("^[a-zA-Z0-9 ]*$")
         if len(new_title) == 0 or len(new_title) > 80 or \
-            (not (re. fullmatch(title_regex,new_title))) \
+            (not (re.fullmatch(title_regex,new_title))) \
                 or new_title[0] == " " or new_title[-1] == " ":
             bool_return = False
         else:
@@ -266,9 +266,8 @@ def update_listing(listing_id, new_title, new_description, new_nightly_cost):
     if (new_description is None or new_description == ""):
         pass
     else:
-        if (len(new_description) < len(listing.title) or\
-             len(new_description) < 20 or
-                len(new_description) > 2000):
+        if (len(new_description) < len(listing.title) or
+            len(new_description) < 20 or len(new_description) > 2000):
             bool_return = False
         else:
             listing.description = new_description
@@ -278,7 +277,8 @@ def update_listing(listing_id, new_title, new_description, new_nightly_cost):
     if (new_nightly_cost is None or new_nightly_cost == ""):
         pass
     else:
-        if (10 > new_nightly_cost > 10000 or new_nightly_cost < listing.nightly_cost):
+        if (10 > new_nightly_cost > 10000 or new_nightly_cost 
+        < listing.nightly_cost):
             bool_return = False
         else:
             listing.nightly_cost = new_nightly_cost
