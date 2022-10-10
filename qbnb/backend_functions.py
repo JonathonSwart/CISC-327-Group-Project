@@ -148,7 +148,7 @@ def login(email, password):
 
 
 def update_profile(user_id, new_username, new_email, new_billing_address,
-                    new_postal_code):
+                   new_postal_code):
     """Updates a users profile to new changes
         Parameters:
             user_id (integer):              The user's user id.
@@ -174,7 +174,7 @@ def update_profile(user_id, new_username, new_email, new_billing_address,
         pass
     else:
         # Checks if username is valid
-        if (new_username != "" and (len(new_username) > 2 and 
+        if (new_username != "" and (len(new_username) > 2 and
                                     len(new_username) < 20)):
             if (re.fullmatch(username_regex, new_username)):
                 user.user_name = new_username
@@ -202,10 +202,9 @@ def update_profile(user_id, new_username, new_email, new_billing_address,
     else:
         # Checks if billing address is valid
         address_regex = re.compile(r"^([0-9]+( [A-Za-z0-9]+)+)")
-        if (new_billing_address != "" and re.fullmatch(address_regex,
-                new_billing_address)):
+        if ((new_billing_address != "") and
+                (re.fullmatch(address_regex, new_billing_address))):
             user.billing_address = new_billing_address
-            
         else:
             send_error = True
 
@@ -231,4 +230,3 @@ def update_profile(user_id, new_username, new_email, new_billing_address,
         return False
     else:
         return True
-
