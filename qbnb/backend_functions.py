@@ -240,8 +240,8 @@ def update_listing(listing_id, new_title, new_description, new_nightly_cost):
             new_description (string):  The user's password.
             new_nightly_cost (int):
         Returns:
-            True if a listing is successfully updated, returns False if a single
-            field does not meet its standards
+            True if a listing is successfully updated, returns False if a 
+            single field does not meet its standards
     '''
     # checking to see if title is valid length and
     # all alphanumeric and doesn't have space
@@ -250,22 +250,24 @@ def update_listing(listing_id, new_title, new_description, new_nightly_cost):
     listing = Listing.query.get(listing_id)
     bool_return = True
 
-    if (new_title == None or new_title == ""):
+    if (new_title is None or new_title == ""):
         pass
     else:
         title_regex = re.compile("^[a-zA-Z0-9 ]*$")
-        if len(new_title) == 0 or len(new_title) > 80 or (not (re. fullmatch(title_regex,
-                                                                             new_title))) or new_title[0] == " " or new_title[-1] == " ":
+        if len(new_title) == 0 or len(new_title) > 80 or \
+            (not (re. fullmatch(title_regex,new_title))) \
+                or new_title[0] == " " or new_title[-1] == " ":
             bool_return = False
         else:
             listing.title = new_title
 
     # if the description if shorter than the title it's not valid
     # if length is less than 20 characters or longer than 2000, it's not valid
-    if (new_description == None or new_description == ""):
+    if (new_description is None or new_description == ""):
         pass
     else:
-        if (len(new_description) < len(listing.title) or len(new_description) < 20 or
+        if (len(new_description) < len(listing.title) or\
+             len(new_description) < 20 or
                 len(new_description) > 2000):
             bool_return = False
         else:
@@ -273,16 +275,17 @@ def update_listing(listing_id, new_title, new_description, new_nightly_cost):
 
     # nightly cost has to be in range 10 - 10000
     # new nightly cost must be greater than the previous nightly cost
-    if (new_nightly_cost == None or new_nightly_cost == ""):
+    if (new_nightly_cost is None or new_nightly_cost == ""):
         pass
     else:
-        if (10 > new_nightly_cost > 10000 or new_nightly_cost < listing.nightly_cost):
+        if (10 > new_nightly_cost > 10000 or new_nightly_cost \
+            < listing.nightly_cost):
             bool_return = False
         else:
             listing.nightly_cost = new_nightly_cost
 
     # if any of the fields are not safely updated, return False
-    if (bool_return == False):
+    if (bool_return is False):
         return False
     else:
         listing.last_modified_date = datetime.now()
