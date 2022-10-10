@@ -1,4 +1,4 @@
-import __init__
+from __init__ import path_setup
 from datetime import datetime
 from qbnb.backend_functions import (login, register, create_listing,
                                     update_profile)
