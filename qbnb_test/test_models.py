@@ -1,4 +1,7 @@
-from __init__ import path_setup
+import sys
+from os import path
+sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
+
 from datetime import datetime
 from qbnb.backend_functions import (login, register, create_listing,
                                     update_profile)
