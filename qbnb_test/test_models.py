@@ -280,6 +280,9 @@ if __name__ == '__main__':
     user inputs.
     """
     test_r2_1_user_login()
+    """
+    Testing create listing requirements.
+    """
     test_r4_1_create_listing()
     test_r4_2_create_listing()
     test_r4_3_create_listing()
