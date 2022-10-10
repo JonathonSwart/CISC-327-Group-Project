@@ -18,7 +18,7 @@ class Listing(db.Model):
     nightly_cost = db.Column(db.Integer, nullable=False)
     last_modified_date = db.Column(
         db.DateTime(), nullable=False, default=datetime.now())
-    owner_id = db.Column(db.Integer, nullable=False)
+    owner_id = db.Column(db.Integer(), nullable=False)
 
     def __repr__(self):
         """Returns the class representation in string format."""

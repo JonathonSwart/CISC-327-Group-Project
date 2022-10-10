@@ -145,3 +145,147 @@ def login(email, password):
     if len(user_data) != 1:
         return None
     return user_data[0]
+
+
+def update_profile(user_id, new_username, new_email, new_billing_address,
+                   new_postal_code):
+    """Updates a users profile to new changes
+        Parameters:
+            user_id (integer):              The user's user id.
+            new_username (string):          The user's new user name.
+            new_email (string):             The user's new email.
+            new_billing_address (string):   The user's new billing address.
+            new_postal_code (string):       The user's new postal code.
+        Returns:
+            True if updates to user's profile are committed successfully
+            and false otherwise.
+    """
+
+    # Checks if user id was inputted
+    if (user_id is None):
+        return False
+
+    user = User.query.get(user_id)  # Get user
+    send_error = False
+
+    # Update users username
+    username_regex = re.compile(r"""^[a-zA-Z0-9][ a-zA-Z0-9]*[a-zA-Z0-9]+""")
+    if (new_username is None):
+        pass
+    else:
+        # Checks if username is valid
+        if (new_username != "" and (len(new_username) > 2 and
+                                    len(new_username) < 20)):
+            if (re.fullmatch(username_regex, new_username)):
+                user.user_name = new_username
+            else:
+                send_error = True
+        else:
+            send_error = True
+
+    # Update users email
+    if (new_email is None):
+        pass
+    else:
+        email_regex = re.compile(r"""([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0
+                                      -9-]+(\.[A-Z|a-z]{2,})+""")
+        # Checks if email is valid
+        if (new_email != "" and re.fullmatch(email_regex, new_email)):
+            user.email = new_email
+
+        else:
+            send_error = True
+
+    # Update users billing address
+    if (new_billing_address is None):
+        pass
+    else:
+        # Checks if billing address is valid
+        address_regex = re.compile(r"^([0-9]+( [A-Za-z0-9]+)+)")
+        if ((new_billing_address != "") and
+                (re.fullmatch(address_regex, new_billing_address))):
+            user.billing_address = new_billing_address
+        else:
+            send_error = True
+
+    # Update users postal code
+    postal_code_regex = re.compile(r"""^([A-Z][0-9][A-Z][0-9][A-Z][0-9])$""")
+    if (new_postal_code is None):
+        pass
+    else:
+        # Checks if postal code is valid
+        if (new_postal_code != "" and len(new_postal_code) == 6):
+            if (re.fullmatch(postal_code_regex, new_postal_code)):
+                user.postal_code = new_postal_code
+            else:
+                send_error = True
+        else:
+            send_error = True
+
+    # Commit changes
+    db.session.commit()
+
+    # Returns false so program knows function did not work
+    if (send_error is True):
+        return False
+    else:
+        return True
+
+
+def update_listing(listing_id, new_title, new_description, new_nightly_cost):
+    '''
+    Update a listing with specific requirments
+        Parameters:
+            listing_id (string): The user's user name.
+            new_title (string):     The user's email.
+            new_description (string):  The user's password.
+            new_nightly_cost (int):
+        Returns:
+            True if a listing is successfully updated, returns False if a single
+            field does not meet its standards
+    '''
+    # checking to see if title is valid length and
+    # all alphanumeric and doesn't have space
+    # as suffix or prefix
+
+    listing = Listing.query.get(listing_id)
+    bool_return = True
+
+    if (new_title == None or new_title == ""):
+        pass
+    else:
+        title_regex = re.compile("^[a-zA-Z0-9 ]*$")
+        if len(new_title) == 0 or len(new_title) > 80 or (not (re. fullmatch(title_regex,
+                                                                             new_title))) or new_title[0] == " " or new_title[-1] == " ":
+            bool_return = False
+        else:
+            listing.title = new_title
+
+    # if the description if shorter than the title it's not valid
+    # if length is less than 20 characters or longer than 2000, it's not valid
+    if (new_description == None or new_description == ""):
+        pass
+    else:
+        if (len(new_description) < len(listing.title) or len(new_description) < 20 or
+                len(new_description) > 2000):
+            bool_return = False
+        else:
+            listing.description = new_description
+
+    # nightly cost has to be in range 10 - 10000
+    # new nightly cost must be greater than the previous nightly cost
+    if (new_nightly_cost == None or new_nightly_cost == ""):
+        pass
+    else:
+        if (10 > new_nightly_cost > 10000 or new_nightly_cost < listing.nightly_cost):
+            bool_return = False
+        else:
+            listing.nightly_cost = new_nightly_cost
+
+    # if any of the fields are not safely updated, return False
+    if (bool_return == False):
+        return False
+    else:
+        listing.last_modified_date = datetime.now()
+        db.session.commit()
+    return True
