@@ -4,33 +4,21 @@
 <body class="mx-auto">
     {% block content %}
     <div class="row">
-        <div class="col-md-1">
-            <h2>QBNB</h2>
-        </div>
-    </div>
-    <div class="row">
         <div class="col"></div>
         <div class="col">
             <div class="login-section">
                 <h1>Login</h1>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="email-input">Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        </span>
-                    </div>
-                    <input type="text" class="form-control" aria-label="Default"
-                        aria-describedby="inputGroup-sizing-default">
-                </div>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="password-input">Password</span>
-                    </div>
-                    <input type="text" class="form-control" aria-label="Default"
-                        aria-describedby="inputGroup-sizing-default">
-                </div>
-                <button type="button" id="login-btn" class="btn btn-primary btn-lg btn-block">Login</button>
-                <button type="button" id="register-btn" class="btn btn-secondary btn-lg btn-block">Register</button>
+                <form action="/login" method="post">
+                    <input type="email" class="form-control" id="email-input" name="email" aria-describedby="emailHelp"
+                        placeholder="Email" required>
+                    <input type="password" class="form-control" id="password-input" name="password"
+                        placeholder="Password" required>
+                    <button type="submit" id="login-btn" class="btn btn-primary btn-lg btn-block">Login</button>
+                </form>
+                <a href="/register " type="button" id="register-btn"
+                    class="btn btn-secondary btn-lg btn-block">Register</a>
             </div>
+            <h3 id="message">{{message}}</h3>
         </div>
         <div class="col"></div>
     </div>

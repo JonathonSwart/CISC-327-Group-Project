@@ -18,8 +18,20 @@ body{
     border-radius: 35px !important;
     box-shadow: 0 0 5px #5A5766 !important;
 }
-
 #login-btn{
     background-color: #61E786 !important;
     border-color: #61E786 !important;
+    margin-bottom: 5px;
+}
+#message{
+    text-align: center;
+}
+#email-input{
+    margin-bottom: 5px;
+}
+#password-input{
+    margin-bottom: 5px;
+}
+#username-input{
+    margin-bottom: 5px;
 }

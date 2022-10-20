@@ -3,7 +3,7 @@ from .models.Booking import Booking
 from .models.Listing import Listing
 from .models.Reviews import Reviews
 from .models.User import User
-from .backend_functions import create_listing, update_listing, register, update_profile
+from .backend_functions import create_listing, update_listing, register, update_profile, login
 
 from qbnb import app
 
@@ -25,9 +25,9 @@ def authenticate(inner_function):
 
         # check did we store the key in the session
         if 'logged_in' in session:
-            email = session['logged_in']
+            id = session['logged_in']
             try:
-                user = User.query.filter_by(email=email).one_or_none()
+                user = User.query.filter_by(id=id).one_or_none()
                 if user:
                     # if the user exists, call the inner_function
                     # with user as parameter
@@ -42,11 +42,34 @@ def authenticate(inner_function):
     return wrapped_inner
 
 
-@app.route('/', methods=['GET'])
+@app.route('/login', methods=['POST', 'GET'])
 def login_get():
+    if request.method == "POST":
+        email = request.form['email']
+        password = request.form['password']
+        user = login(email, password)
+        if user:
+            session['logged_in'] = user.id
+            return render_template('login.html', message='Logged In!')
+        else:
+            return render_template('login.html', message='Incorrect email or password provided.')
     return render_template('login.html')
 
 
-@app.route('/register', methods=['GET'])
-def home():
+@app.route('/register', methods=['POST', 'GET'])
+def register_post():
+    if request.method == "POST":
+        email = request.form['email']
+        password = request.form['password']
+        username = request.form['username']
+        register_user = register(username, email, password)
+        if register_user == True:
+            return render_template('login.html', message='Login with your new account.')
+        else:
+            return render_template('register.html', message='One or more inputs have been entered incorrectly. Please try again.')
     return render_template('register.html')
+
+
+@app.route('/home', methods=['GET'])
+def home():
+    return render_template('home.html')
