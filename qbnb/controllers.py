@@ -42,11 +42,11 @@ def authenticate(inner_function):
     return wrapped_inner
 
 
-@app.route('/login', methods=['GET'])
+@app.route('/', methods=['GET'])
 def login_get():
     return render_template('login.html')
 
 
-@app.route('/', methods=['GET'])
+@app.route('/register', methods=['GET'])
 def home():
     return render_template('register.html')
