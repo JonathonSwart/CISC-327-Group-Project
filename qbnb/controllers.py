@@ -1,3 +1,4 @@
+from email import message
 from flask import render_template, request, session, redirect
 from .models.Booking import Booking
 from .models.Listing import Listing
@@ -73,3 +74,15 @@ def register_post():
 @app.route('/home', methods=['GET'])
 def home():
     return render_template('home.html')
+
+@app.route('/create-listing', methods=['POST', 'GET'])
+def create_listing():
+    if request.method == "POST":
+        title = request.form['title']
+        description = request.form['description']
+        nightly_cost = request.form['nightly-cost']
+        valid_listing = create_listing(title, description, nightly_cost)
+        if valid_listing is True:
+            return render_template('home.html', message="Successful Listing Creation")
+        else:
+            return render_template('create_listing.html', message='Listing Creation Failed')
