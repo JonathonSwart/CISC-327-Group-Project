@@ -76,13 +76,15 @@ def home():
     return render_template('home.html')
 
 @app.route('/create-listing', methods=['POST', 'GET'])
-def create_listing():
+def create_listings():
     if request.method == "POST":
         title = request.form['title']
         description = request.form['description']
         nightly_cost = request.form['nightly-cost']
-        valid_listing = create_listing(title, description, nightly_cost)
+        user_id = request.form['user-id']
+        valid_listing = create_listing(title, description, int(nightly_cost), int(user_id))
         if valid_listing is True:
-            return render_template('home.html', message="Successful Listing Creation")
+            return render_template('create_listing.html', message="Successful Listing Creation")
         else:
             return render_template('create_listing.html', message='Listing Creation Failed')
+    return render_template('create_listing.html')
