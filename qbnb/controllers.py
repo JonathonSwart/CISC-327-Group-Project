@@ -81,7 +81,8 @@ def create_listings():
         title = request.form['title']
         description = request.form['description']
         nightly_cost = request.form['nightly-cost']
-        user_id = request.form['user-id']
+        email = request.form['email']
+        user_id = User.query.filter_by(email=email).first().id
         valid_listing = create_listing(title, description, int(nightly_cost), int(user_id))
         if valid_listing is True:
             return render_template('create_listing.html', message="Successful Listing Creation")
