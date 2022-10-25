@@ -1,4 +1,4 @@
-from flask import render_template, request, session, redirect
+from flask import render_template, request, session, redirect, url_for
 from .models.Booking import Booking
 from .models.Listing import Listing
 from .models.Reviews import Reviews
@@ -103,13 +103,30 @@ def logout():
     return redirect('/')
 
 
-@app.route('/update_profile', methods=['GET', 'POST'])
-def update_profile():
-    # Jonathan you change this
-    if 'logged_in' in session:
-        return render_template('update_profile.html')
-    else:
-        return redirect('/login')
+@app.route('/update_profile', methods=['POST', 'GET'])
+def update_profiles():
+    """
+    Will update the database with the new email, username, address, and
+    postal code inputted by the user. If the user successfully updates
+    their profile, they will be redirected to the home page.
+    """
+
+    if request.method == "POST":
+        username = request.form['username']
+        new_email = request.form['new_email']
+        address = request.form['address']
+        postal_code = request.form['postal_code']
+        if 'logged_in' in session:
+            user_id = session['logged_in']
+        update_pf = update_profile(user_id, username, new_email, address,
+                                   postal_code)
+        if update_pf is True:
+            return redirect('/')
+        else:
+            return render_template('update_profile.html',
+                                   message="""Something 
+                                    went wrong. Invalid input.""")
+    return render_template('update_profile.html')
 
 
 @app.route('/listing', methods=['GET'])

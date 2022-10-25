@@ -261,7 +261,7 @@ def test_r3_4_update_profile():
     assert update_profile(1, "Ash K", None, None, None) is True
     assert update_profile(2, "Jonathon is the best!", None, None, None)\
         is False
-    assert update_profile(4, "", None, None, None) is False
+    assert update_profile(4, "", None, None, None) is True
     assert update_profile(5, "jonathon@swart", None, None, None) is False
 
 

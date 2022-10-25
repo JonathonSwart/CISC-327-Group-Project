@@ -169,7 +169,7 @@ def update_profile(user_id, new_username, new_email, new_billing_address,
 
     # Update users username
     username_regex = re.compile(r"""^[a-zA-Z0-9][ a-zA-Z0-9]*[a-zA-Z0-9]+""")
-    if (new_username is None):
+    if (new_username is None or new_username == ""):
         pass
     else:
         # Checks if username is valid
@@ -183,7 +183,7 @@ def update_profile(user_id, new_username, new_email, new_billing_address,
             send_error = True
 
     # Update users email
-    if (new_email is None):
+    if (new_email is None or new_email == ""):
         pass
     else:
         email_regex = re.compile(r"""([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0
@@ -196,7 +196,7 @@ def update_profile(user_id, new_username, new_email, new_billing_address,
             send_error = True
 
     # Update users billing address
-    if (new_billing_address is None):
+    if (new_billing_address is None or new_billing_address == ""):
         pass
     else:
         # Checks if billing address is valid
@@ -209,7 +209,7 @@ def update_profile(user_id, new_username, new_email, new_billing_address,
 
     # Update users postal code
     postal_code_regex = re.compile(r"""^([A-Z][0-9][A-Z][0-9][A-Z][0-9])$""")
-    if (new_postal_code is None):
+    if (new_postal_code is None or new_postal_code == ""):
         pass
     else:
         # Checks if postal code is valid
