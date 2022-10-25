@@ -4,7 +4,7 @@ from .models.Listing import Listing
 from .models.Reviews import Reviews
 from .models.User import User
 from .backend_functions import create_listing, update_listing, register, \
-                                update_profile, login
+    update_profile, login
 
 from qbnb import app
 
