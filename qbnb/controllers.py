@@ -103,13 +103,22 @@ def logout():
     return redirect('/')
 
 
-@app.route('/update_profile', methods=['GET', 'POST'])
-def update_profile():
-    # Jonathan you change this
-    if 'logged_in' in session:
-        return render_template('update_profile.html')
-    else:
-        return redirect('/login')
+@app.route('/update-profile', methods=['POST', 'GET'])
+def update_profiles():
+    if request.method == "POST":
+        email = request.form['email']
+        username = request.form['username']
+        new_email = request.form['new_email']
+        address = request.form['address']
+        postal_code = request.form['postal_code']
+        user = User.query.filter_by(email=email).first()
+        user_id = user.id
+        update_pf = update_profile(user_id, username, new_email, address, postal_code)
+        if update_pf is True:
+            return redirect(url_for("home"))
+        else:
+            return render_template('update_profile.html', message='Email verification failed. Please enter a valid email.')
+    return render_template('update_profile.html')
 
 
 @app.route('/listing', methods=['GET'])
