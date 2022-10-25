@@ -35,3 +35,78 @@ body{
 #username-input{
     margin-bottom: 5px;
 }
+
+div .links {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+a {
+    margin-right: 15px;
+  }
+  div .links {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  a {
+    margin-right: 15px;
+  }
+  
+  .form-control {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+  ::placeholder {
+    font-style: bold;
+    font-size: 18px;
+    color: mintcream;
+    padding: 1px;
+    font-weight: 500;
+  }
+  
+  input:focus::placeholder {
+    color: transparent;
+  }
+  
+  .go-home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #home-btn {
+    background-color: #61e786 !important;
+    border-color: #61e786 !important;
+  }
+  
+.form-control {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+::placeholder {
+    font-style: bold;
+    font-size: 18px;
+    color: mintcream;
+    padding: 1px;
+    font-weight: 500;
+  }
+  
+input:focus::placeholder {
+    color: transparent;
+  }
+  
+.go-home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+#home-btn {
+    background-color: #61e786 !important;
+    border-color: #61e786 !important;
+  }
