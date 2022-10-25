@@ -112,17 +112,16 @@ def update_profiles():
     """
 
     if request.method == "POST":
-        email = request.form['email']
         username = request.form['username']
         new_email = request.form['new_email']
         address = request.form['address']
         postal_code = request.form['postal_code']
-        user = User.query.filter_by(email=email).first()
-        user_id = user.id
+        if 'logged_in' in session:
+            user_id = session['logged_in']
         update_pf = update_profile(user_id, username, new_email, address,
                                     postal_code)
         if update_pf is True:
-            return redirect(url_for("home"))
+            return redirect('/')
         else:
             return render_template('update_profile.html', 
             message='Something went wrong. Invalid input.')
