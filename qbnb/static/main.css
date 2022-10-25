@@ -18,6 +18,15 @@ body {
   border-radius: 35px !important;
   box-shadow: 0 0 5px #5a5766 !important;
 }
+.listing-section{
+  background-color: white !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+  border-radius: 35px !important;
+  box-shadow: 0 0 5px #5A5766 !important;
+}
 #login-btn {
   background-color: #61e786 !important;
   border-color: #61e786 !important;
@@ -39,6 +48,20 @@ body {
   margin-bottom: 5px;
 }
 #address-input {
+  margin-bottom: 5px;
+}
+#create-ls-btn{
+  background-color: #61E786 !important;
+  border-color: #61E786 !important;
+  margin-bottom: 5px;
+}
+#title-input{
+  margin-bottom: 5px;
+}
+#description-input{
+  margin-bottom: 5px;
+}
+#cost-input{
   margin-bottom: 5px;
 }
 
