@@ -44,32 +44,46 @@ def authenticate(inner_function):
 
 @app.route('/login', methods=['POST', 'GET'])
 def login_get():
+    """
+    Sets the session logged_in value to the fetched user from the provided
+    email and password. When the user logs in it redirects them to the home
+    page.
+    """
+
     if request.method == "POST":
         email = request.form['email']
         password = request.form['password']
         user = login(email, password)
         if user:
             session['logged_in'] = user.id
+            # Change this line so thath the user is sent to the home page
+            # when they log in.
             return render_template('login.html', message='Logged In!')
         else:
-            return render_template('login.html', message='Incorrect email or password provided.')
+            return render_template('login.html',
+                                   message="""Incorrect email or 
+                                   password provided.""")
     return render_template('login.html')
 
 
 @app.route('/register', methods=['POST', 'GET'])
 def register_post():
+    """
+    When a user registers an account, the provided username, email and 
+    password are sent to the register function in the backend. Creating
+    an account with the given information and then redirecting the user 
+    to the login page.
+    """
+
     if request.method == "POST":
         email = request.form['email']
         password = request.form['password']
         username = request.form['username']
         register_user = register(username, email, password)
         if register_user == True:
-            return render_template('login.html', message='Login with your new account.')
+            return render_template('login.html',
+                                   message='Login with your new account.')
         else:
-            return render_template('register.html', message='One or more inputs have been entered incorrectly. Please try again.')
+            return render_template('register.html', message="""One or more 
+            inputs have been entered incorrectly. Please try again.""")
     return render_template('register.html')
-
-
-@app.route('/home', methods=['GET'])
-def home():
-    return render_template('home.html')
