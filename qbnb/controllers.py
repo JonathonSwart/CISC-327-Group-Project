@@ -153,7 +153,8 @@ def updating_listing():
             else:
                 return render_template(
                     'update_listing.html',
-                    listing=listing, message="one or more inputs are incorrect")
+                    listing=listing,
+                    message="one or more inputs are incorrect")
     else:
         return redirect('/')
 
