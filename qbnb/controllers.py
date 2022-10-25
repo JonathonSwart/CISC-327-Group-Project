@@ -119,12 +119,13 @@ def update_profiles():
         if 'logged_in' in session:
             user_id = session['logged_in']
         update_pf = update_profile(user_id, username, new_email, address,
-                                    postal_code)
+                                   postal_code)
         if update_pf is True:
             return redirect('/')
         else:
-            return render_template('update_profile.html', 
-            message='Something went wrong. Invalid input.')
+            return render_template('update_profile.html',
+                                   message="""Something 
+                                    went wrong. Invalid input.""")
     return render_template('update_profile.html')
 
 
