@@ -3,7 +3,8 @@ from .models.Booking import Booking
 from .models.Listing import Listing
 from .models.Reviews import Reviews
 from .models.User import User
-from .backend_functions import create_listing, update_listing, register, update_profile, login
+from .backend_functions import create_listing, update_listing, register, \
+                                update_profile, login
 
 from qbnb import app
 
@@ -80,7 +81,7 @@ def register_post():
         password = request.form['password']
         username = request.form['username']
         register_user = register(username, email, password)
-        if register_user == True:
+        if register_user:
             return render_template('login.html',
                                    message='Login with your new account.')
         else:
