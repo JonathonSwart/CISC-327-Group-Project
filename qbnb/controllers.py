@@ -1,10 +1,10 @@
-from email import message
-from flask import render_template, request, session, redirect
+from flask import render_template, request, session, redirect, url_for
 from .models.Booking import Booking
 from .models.Listing import Listing
 from .models.Reviews import Reviews
 from .models.User import User
-from .backend_functions import create_listing, update_listing, register, update_profile, login
+from .backend_functions import create_listing, update_listing, register, \
+    update_profile, login
 
 from qbnb import app
 
@@ -45,47 +45,141 @@ def authenticate(inner_function):
 
 @app.route('/login', methods=['POST', 'GET'])
 def login_get():
+    """
+    Sets the session logged_in value to the fetched user from the provided
+    email and password. When the user logs in it redirects them to the home
+    page.
+    """
+
     if request.method == "POST":
         email = request.form['email']
         password = request.form['password']
         user = login(email, password)
         if user:
             session['logged_in'] = user.id
-            return render_template('login.html', message='Logged In!')
+            return redirect('/')
         else:
-            return render_template('login.html', message='Incorrect email or password provided.')
+            return render_template('login.html',
+                                   message="""Incorrect email or 
+                                   password provided.""")
     return render_template('login.html')
 
 
 @app.route('/register', methods=['POST', 'GET'])
 def register_post():
+    """
+    When a user registers an account, the provided username, email and 
+    password are sent to the register function in the backend. Creating
+    an account with the given information and then redirecting the user 
+    to the login page.
+    """
+
     if request.method == "POST":
         email = request.form['email']
         password = request.form['password']
         username = request.form['username']
         register_user = register(username, email, password)
-        if register_user == True:
-            return render_template('login.html', message='Login with your new account.')
+        if register_user:
+            return render_template('login.html',
+                                   message='Login with your new account.')
         else:
-            return render_template('register.html', message='One or more inputs have been entered incorrectly. Please try again.')
+            return render_template('register.html', message="""One or more 
+            inputs have been entered incorrectly. Please try again.""")
     return render_template('register.html')
 
 
-@app.route('/home', methods=['GET'])
-def home():
-    return render_template('home.html')
+@app.route('/', methods=['GET', 'POST'])
+@authenticate
+def home(user):
+    return render_template('home.html', user=user)
 
-@app.route('/create-listing', methods=['POST', 'GET'])
-def create_listings():
+
+@app.route('/logout')
+def logout():
+    # When you logout you redirect to home which redirects
+    # for you to log in first
+    if 'logged_in' in session:
+        session.pop('logged_in', None)
+    return redirect('/')
+
+
+@app.route('/update_profile', methods=['POST', 'GET'])
+def update_profiles():
+    """
+    Will update the database with the new email, username, address, and
+    postal code inputted by the user. If the user successfully updates
+    their profile, they will be redirected to the home page.
+    """
+
     if request.method == "POST":
-        title = request.form['title']
-        description = request.form['description']
-        nightly_cost = request.form['nightly-cost']
-        email = request.form['email']
-        user_id = User.query.filter_by(email=email).first().id
-        valid_listing = create_listing(title, description, int(nightly_cost), int(user_id))
-        if valid_listing is True:
-            return render_template('create_listing.html', message="Successful Listing Creation")
+        username = request.form['username']
+        new_email = request.form['new_email']
+        address = request.form['address']
+        postal_code = request.form['postal_code']
+        if 'logged_in' in session:
+            user_id = session['logged_in']
+        update_pf = update_profile(user_id, username, new_email, address,
+                                   postal_code)
+        if update_pf is True:
+            return redirect('/')
         else:
-            return render_template('create_listing.html', message='Listing Creation Failed')
-    return render_template('create_listing.html')
+            return render_template('update_profile.html',
+                                   message="""Something 
+                                    went wrong. Invalid input.""")
+    return render_template('update_profile.html')
+
+
+@app.route('/listing', methods=['GET'])
+def listing():
+    if 'logged_in' in session:
+        id = session['logged_in']
+        user = User.query.filter_by(id=id).one_or_none()
+        listings = Listing.query.filter_by(owner_id=id).all()
+        return render_template('listing.html', user=user, listings=listings)
+    else:
+        return redirect('/login')
+
+
+@app.route('/select_update_listing', methods=['GET', 'POST'])
+def select_update_listing():
+    if request.method == "POST":
+        data = request.form['data']
+        listing = Listing.query.filter_by(id=data).one_or_none()
+        if listing:
+            print(listing)
+            return render_template('update_listing.html', listing=listing)
+        else:
+            return redirect('/')
+    return render_template('update_listing.html', listing=listing)
+
+
+@app.route('/update_listing', methods=['GET', 'POST'])
+def updating_listing():
+    if 'logged_in' in session:
+        if request.method == "POST":
+            data = request.form['data']
+            listing = Listing.query.filter_by(id=data).one_or_none()
+            new_title = request.form['new-title']
+            new_description = request.form['new-description']
+            new_nightly_cost = request.form['new-cost']
+            new_nightly_cost = int(new_nightly_cost)
+            updated = update_listing(
+                data, new_title, new_description, new_nightly_cost)
+            if updated:
+                return redirect('/listing')
+            else:
+                return render_template(
+                    'update_listing.html',
+                    listing=listing,
+                    message="one or more inputs are incorrect")
+    else:
+        return redirect('/')
+
+
+@app.route('/create_listing', methods=['GET', 'POST'])
+def create_listing():
+    # luca this ones yours
+    if 'logged_in' in session:
+        return render_template('create_listing.html')
+    else:
+        return redirect('/login')

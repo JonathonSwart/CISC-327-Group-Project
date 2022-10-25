@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+<h1>{% block title %}Update Profile{% endblock %}</h1>
+<body class="mx-auto">
+  {% block content %}
+  <div class="row">
+    <div class="col"></div>
+    <div class="col">
+      <div class="login-section">
+        <h1>Update Profile</h1>
+        <form action="/update_profile" method="post">
+          <input type="name" class="form-control" id="username-input" name="username" placeholder="New Username">
+          <input type="new_email" class="form-control" id="email-input" name="new_email" aria-describedby="emailHelp"
+            placeholder="New Email">
+          <input type="text" class="form-control" id="address-input" name="address" placeholder="New Address">
+          <input type="text" class="form-control" id="postal_code-input" name="postal_code"
+            placeholder="New Postal Code">
+          <button type="submit" id="update-profile-btn" class="btn btn-primary btn-lg btn-block">
+            Update Profile</button>
+        </form>
+        <a href="/" type="button" id="update-btn" class="btn btn-secondary btn-lg btn-block">Back To Home</a>
+      </div>
+      <h3 id="message">{{message}}</h3>
+    </div>
+    <div class="col"></div>
+  </div>
+  </div>
+  {% endblock %}
+</body>

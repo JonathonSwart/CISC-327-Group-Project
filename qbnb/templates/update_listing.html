@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+<h1>{% block title %}QBNB updating listing{% endblock %}</h1>
+
+
+<body class="mx-auto">
+  {% block content %}
+  <div class="row">
+    <div class="col"></div>
+    <div class="col">
+      <div class="login-section">
+        <h2>Update: {{listing.title}}</h2>
+        <hr>
+        <form action="/update_listing" method="post">
+          <input type="text" class="form-control" id="new-title" name="new-title" placeholder="Insert new title">
+          <input type="text" class="form-control" id="new-description" name="new-description"
+            placeholder="Insert new listing description">
+          <input type="text" class="form-control" id="new-cost" name="new-cost" placeholder="Insert new cost amount">
+          <input type="hidden" id="text" name="data" value="{{listing.id}}">
+          <button type="submit" id="subimt-btn" class="btn btn-primary btn-lg btn-block">Update this
+            Listing</button>
+        </form>
+
+      </div>
+      <p>{{message}}</p>
+    </div>
+    <div class="col"></div>
+  </div>
+  </div>
+  {% endblock %}
+</body>

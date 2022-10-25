@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+<h1>{% block title %}QBNB listings{% endblock %}</h1>
+<body class="mx-auto">
+  {% block content %}
+  <div class="row">
+    <div class="col"></div>
+    <div class="col">
+      <div class="login-section">
+        <h2> {{user.user_name}} Listing's:</h2>
+        <hr>
+        <div>
+          {% for listing in listings %}
+          <div>
+            <form action="/select_update_listing" method="post">
+              <input type="hidden" id="text" name="data" value="{{listing.id}}">
+              <h4>
+                Title: {{ listing.title }} Nightly_Cost: {{ listing.nightly_cost }} <button type="submit"
+                  id="update-btn" class="btn btn-primary btn-lg btn-block">Edit</button>
+                <hr>
+              </h4>
+            </form>
+          </div>
+          {% endfor %}
+        </div>
+        <div>
+          <form action="/" class="go-home">
+            <button class="btn btn-primary" id="home-btn" type="submit">Go Home</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col"></div>
+  </div>
+  </div>
+  {% endblock %}
+</body>
