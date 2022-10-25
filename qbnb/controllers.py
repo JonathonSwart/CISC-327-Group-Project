@@ -96,7 +96,8 @@ def home(user):
 
 @app.route('/logout')
 def logout():
-    # When you logout you redirect to home which redirects for you to log in first
+    # When you logout you redirect to home which redirects
+    # for you to log in first
     if 'logged_in' in session:
         session.pop('logged_in', None)
     return redirect('/')
