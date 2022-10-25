@@ -57,9 +57,7 @@ def login_get():
         user = login(email, password)
         if user:
             session['logged_in'] = user.id
-            # Change this line so thath the user is sent to the home page
-            # when they log in.
-            return render_template('login.html', message='Logged In!')
+            return redirect('/')
         else:
             return render_template('login.html',
                                    message="""Incorrect email or 
@@ -88,3 +86,81 @@ def register_post():
             return render_template('register.html', message="""One or more 
             inputs have been entered incorrectly. Please try again.""")
     return render_template('register.html')
+
+
+@app.route('/', methods=['GET', 'POST'])
+@authenticate
+def home(user):
+    return render_template('home.html', user=user)
+
+
+@app.route('/logout')
+def logout():
+    # When you logout you redirect to home which redirects for you to log in first
+    if 'logged_in' in session:
+        session.pop('logged_in', None)
+    return redirect('/')
+
+
+@app.route('/update_profile', methods=['GET', 'POST'])
+def update_profile():
+    # Jonathan you change this
+    if 'logged_in' in session:
+        return render_template('update_profile.html')
+    else:
+        return redirect('/login')
+
+
+@app.route('/listing', methods=['GET'])
+def listing():
+    if 'logged_in' in session:
+        id = session['logged_in']
+        user = User.query.filter_by(id=id).one_or_none()
+        listings = Listing.query.filter_by(owner_id=id).all()
+        return render_template('listing.html', user=user, listings=listings)
+    else:
+        return redirect('/login')
+
+
+@app.route('/select_update_listing', methods=['GET', 'POST'])
+def select_update_listing():
+    if request.method == "POST":
+        data = request.form['data']
+        listing = Listing.query.filter_by(id=data).one_or_none()
+        if listing:
+            print(listing)
+            return render_template('update_listing.html', listing=listing)
+        else:
+            return redirect('/')
+    return render_template('update_listing.html', listing=listing)
+
+
+@app.route('/update_listing', methods=['GET', 'POST'])
+def updating_listing():
+    if 'logged_in' in session:
+        if request.method == "POST":
+            data = request.form['data']
+            listing = Listing.query.filter_by(id=data).one_or_none()
+            new_title = request.form['new-title']
+            new_description = request.form['new-description']
+            new_nightly_cost = request.form['new-cost']
+            new_nightly_cost = int(new_nightly_cost)
+            updated = update_listing(
+                data, new_title, new_description, new_nightly_cost)
+            if updated:
+                return redirect('/listing')
+            else:
+                return render_template(
+                    'update_listing.html',
+                    listing=listing, message="one or more inputs are incorrect")
+    else:
+        return redirect('/')
+
+
+@app.route('/create_listing', methods=['GET', 'POST'])
+def create_listing():
+    # luca this ones yours
+    if 'logged_in' in session:
+        return render_template('create_listing.html')
+    else:
+        return redirect('/login')
