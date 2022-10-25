@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+<h1>{% block title %}Log In{% endblock %}</h1>
+
+<body class="mx-auto">
+  {% block content %}
+  <div class="row">
+    <div class="col"></div>
+    <div class="col">
+      <div class="login-section">
+        <h1>Login</h1>
+        <form action="/login" method="post">
+          <input type="email" class="form-control" id="email-input" name="email" aria-describedby="emailHelp"
+            placeholder="Email" required>
+          <input type="password" class="form-control" id="password-input" name="password" placeholder="Password"
+            required>
+          <button type="submit" id="login-btn" class="btn btn-primary btn-lg btn-block">Login</button>
+        </form>
+        <a href="/register " type="button" id="register-btn" class="btn btn-secondary btn-lg btn-block">Register</a>
+      </div>
+      <h3 id="message">{{message}}</h3>
+    </div>
+    <div class="col"></div>
+  </div>
+  </div>
+  {% endblock %}
+</body>

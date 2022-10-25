@@ -1,0 +1,37 @@
+h2{
+    text-align: center;
+    color: #61E786 !important;
+}
+h1{
+    text-align: center;
+    color: #5A5766 !important;
+}
+body{
+    background-color: #EDFFEC !important;
+}
+.login-section{
+    background-color: white !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+    border-radius: 35px !important;
+    box-shadow: 0 0 5px #5A5766 !important;
+}
+#login-btn{
+    background-color: #61E786 !important;
+    border-color: #61E786 !important;
+    margin-bottom: 5px;
+}
+#message{
+    text-align: center;
+}
+#email-input{
+    margin-bottom: 5px;
+}
+#password-input{
+    margin-bottom: 5px;
+}
+#username-input{
+    margin-bottom: 5px;
+}
