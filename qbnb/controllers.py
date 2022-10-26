@@ -184,14 +184,14 @@ def create_listings():
             description = request.form['description']
             nightly_cost = request.form['nightly-cost']
             user_id = session['logged_in']
-            valid_listing = create_listing(title, description, 
-            int(nightly_cost), int(user_id))
+            valid_listing = create_listing(title, description,
+                                           int(nightly_cost), int(user_id))
             if valid_listing is True:
-                return render_template('create_listing.html', \
-                    message="SUCCESS: Listing Created")
+                return render_template('create_listing.html',
+                                       message="SUCCESS: Listing Created")
             else:
-                return render_template('create_listing.html', \
-                    message='FAILED: Try again with different inputs')
+                return render_template('create_listing.html',
+                                       message='FAILED: Try again with different inputs')
         return render_template('create_listing.html')
     else:
         return redirect('/login')
