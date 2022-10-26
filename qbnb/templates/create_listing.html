@@ -8,7 +8,7 @@
     <div class="col">
       <div class="listing-section">
         <h1>Create Listing</h1>
-        <form action="/create-listing" method="post">
+        <form action="/create_listing" method="post">
           <input type="text" class="form-control" id="title-input" name="title" placeholder="Title" required>
           <input type="text" class="form-control" id="description-input" name="description" placeholder="Description"
             required>
@@ -16,7 +16,7 @@
             min="10" max="10000" required>
           <button type="submit" id="create-ls-btn" class="btn btn-primary btn-cl btn-block">Create Listing</button>
         </form>
-        <a href="/home " type="button" id="create-listing-btn" class="btn btn-secondary btn-cl btn-block">Back To
+        <a href="/" type="button" id="create-listing-btn" class="btn btn-secondary btn-cl btn-block">Back To
           Home</a>
       </div>
       <h3 id="message">{{message}}</h3>

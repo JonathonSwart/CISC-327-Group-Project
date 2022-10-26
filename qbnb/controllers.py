@@ -177,7 +177,7 @@ def updating_listing():
 
 
 @app.route('/create_listing', methods=['GET', 'POST'])
-def create_listing():
+def create_listings():
     if 'logged_in' in session:
         if request.method == "POST":
             title = request.form['title']
