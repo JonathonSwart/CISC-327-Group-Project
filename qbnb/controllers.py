@@ -190,8 +190,8 @@ def create_listings():
                 return render_template('create_listing.html',
                                        message="SUCCESS: Listing Created")
             else:
-                return render_template('create_listing.html',
-                                       message='FAILED: Try again with different inputs')
+                return render_template('create_listing.html', message='FAILED:\
+                                       Try again with different inputs')
         return render_template('create_listing.html')
     else:
         return redirect('/login')
