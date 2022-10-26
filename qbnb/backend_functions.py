@@ -58,7 +58,6 @@ def create_listing(title, description, nightly_cost,
     db.session.add(listing1)
 
     db.session.commit()
-
     return True
 
 
