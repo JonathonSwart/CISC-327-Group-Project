@@ -18,7 +18,7 @@ def test_r1_1_user_register():
     Testing R1-1 & 1 part of R1-5: If any of the provided inputs are empty, 
                                    the operation has failed.
     '''
-
+    
     assert register('User1', 'test_user@gmail.com', 'abc123DEF@') is True
     assert register('', '', '') is False
     assert register('User1', 'test_user@gmail.com', '') is False
@@ -214,7 +214,6 @@ def test_r4_5_create_listing():
     and each posting on the database must have a unique title
     """
     # Checking is user has valid account made and valid email
-    print("this")
     assert create_listing(
         # no onwer_id 16 so should be false
         "House title5", "this is the house description", 1000, 160) is False
