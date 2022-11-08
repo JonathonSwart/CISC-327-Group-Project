@@ -4,3 +4,9 @@ db.sqlite
 bin
 lib
 pyvenv.cfg
+man
+latest_logs
+include
+archived_logs
+.pytest_cache
+share

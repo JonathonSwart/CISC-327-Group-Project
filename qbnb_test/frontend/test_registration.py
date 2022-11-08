@@ -4,5 +4,6 @@ from unittest.mock import patch
 from qbnb.models.User import User
 
 
-class FrontEndRegisterPAge(BaseCase):
-    pass
+class FrontEndRegisterPage(BaseCase):
+    def test_register(self, *_):
+        self.open(base_url)

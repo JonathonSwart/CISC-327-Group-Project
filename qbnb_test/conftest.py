@@ -2,14 +2,12 @@ import os
 import sys
 import pytest
 import time
-import tempfile
 import threading
 from werkzeug.serving import make_server
 from os import path
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))  # noqa
 from qbnb.models.model_handler import db
-from qbnb.__init__ import app
-
+from qbnb import app
 
 def pytest_sessionstart():
     '''
@@ -25,13 +23,12 @@ def pytest_sessionstart():
         os.remove('instance/db.sqlite')
         db.create_all()
 
-
 def pytest_sessionfinish():
     '''
     Optional function called when testing is done.
     Do nothing for now
     '''
-    print("Done Testing")
+    print("End of session.")
 
 base_url = 'http://127.0.0.1:{}'.format(8081)
 
