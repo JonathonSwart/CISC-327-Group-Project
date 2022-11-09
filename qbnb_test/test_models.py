@@ -12,6 +12,13 @@ The reason we put no noqa is to get around an issue relating to vscode and
 import issues.
 """
 
+def test_env_start():
+    '''
+    Clearing the test enviroment. (Need this for pytest)
+    '''
+
+    pytest_sessionstart()
+
 
 def test_r1_1_user_register():
     '''
@@ -288,8 +295,16 @@ def test_r5_2_update_listing():
     assert update_listing(4, None, None, 6000) is True
 
 
+def test_env_end():
+    '''
+    Clearing the test enviroment. (Need this for pytest)
+    '''
+
+    pytest_sessionfinish()
+
+
 if __name__ == '__main__':
-    pytest_sessionstart()
+    test_env_start()
     """
     Testing user registration requirements, skipping ones that don't involve
     user inputs.
@@ -323,4 +338,4 @@ if __name__ == '__main__':
     """
     test_r5_1_update_listing()
     test_r5_2_update_listing()
-    pytest_sessionfinish()
+    test_env_end()
