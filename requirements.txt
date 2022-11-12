@@ -4,3 +4,4 @@ SQLAlchemy
 pytest
 flake8
 seleniumbase
+autopep8

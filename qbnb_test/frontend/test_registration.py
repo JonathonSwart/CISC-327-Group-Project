@@ -27,8 +27,8 @@ class FrontEndRegisterPage(BaseCase):
 
         # Check the output.
         self.assert_element("#message")
-        self.assert_text("""One or more inputs have been entered incorrectly.
-            Please try again.""", "  # message")
+        self.assert_text("One or more inputs have been entered incorrectly." +
+                         " Please try again.", "#message")
 
     def test_r1_3_user_register(self, *_):
         """
@@ -51,6 +51,9 @@ class FrontEndRegisterPage(BaseCase):
         self.type("#username-input", "Jeevan123")
         time.sleep(2)
         self.click("#login-btn")
+        self.assert_element("#message")
+        self.assert_text("One or more inputs have been entered incorrectly." +
+                         " Please try again.", "#message")
 
         # P2 - Input does follow the RFC 5532 specifications.
         self.type("#email-input", "jeevan_start@gmail.com")
@@ -58,6 +61,9 @@ class FrontEndRegisterPage(BaseCase):
         self.type("#username-input", "Jeevan123")
         time.sleep(2)
         self.click("#login-btn")
+        self.assert_element("#message")
+        self.assert_text(
+            "Login with your new account.", "#message")
 
     def test_r1_4_user_register(self, *_):
         """
@@ -80,8 +86,8 @@ class FrontEndRegisterPage(BaseCase):
         self.click("#login-btn")
         # Check the output.
         self.assert_element("#message")
-        self.assert_text("""One or more inputs have been entered incorrectly.
-            Please try again.""", "  # message")
+        self.assert_text("One or more inputs have been entered incorrectly." +
+                         " Please try again.", "#message")
 
         # P2, given the right password requirements do register.
         self.open(base_url + '/register')
@@ -114,10 +120,10 @@ class FrontEndRegisterPage(BaseCase):
         self.type("#username-input", " Jeevan ")
         time.sleep(2)
         self.click("#login-btn")
-        # Check the output.
+        # Verifiying output
         self.assert_element("#message")
-        self.assert_text("""One or more inputs have been entered incorrectly.
-            Please try again.""", "  # message")
+        self.assert_text("One or more inputs have been entered incorrectly." +
+                         " Please try again.", "#message")
 
         # P2, given the right username requirements do register.
         self.open(base_url + '/register')
@@ -150,6 +156,10 @@ class FrontEndRegisterPage(BaseCase):
         self.type("#username-input", "J")
         time.sleep(2)
         self.click("#login-btn")
+        # Verifiying output
+        self.assert_element("#message")
+        self.assert_text("One or more inputs have been entered incorrectly." +
+                         " Please try again.", "#message")
 
         # T2, a username greater than 20 characters is provided.
         self.type("#email-input", "jeevan_louie@gmail.com")
@@ -157,6 +167,10 @@ class FrontEndRegisterPage(BaseCase):
         self.type("#username-input", "Jeeeeeeeeeeeeeeeeeeen")
         time.sleep(2)
         self.click("#login-btn")
+        # Verifiying output
+        self.assert_element("#message")
+        self.assert_text("One or more inputs have been entered incorrectly." +
+                         " Please try again.", "#message")
 
         # T3, a username greater than 30 characters is provided.
         self.type("#email-input", "jeevan_louie@gmail.com")
@@ -165,6 +179,10 @@ class FrontEndRegisterPage(BaseCase):
         eeeeeeeeeen""")
         time.sleep(2)
         self.click("#login-btn")
+        # Verifiying output
+        self.assert_element("#message")
+        self.assert_text("One or more inputs have been entered incorrectly." +
+                         " Please try again.", "#message")
 
         # T4, a username greater than 40 characters is provided.
         self.type("#email-input", "jeevan_louie@gmail.com")
@@ -173,6 +191,10 @@ class FrontEndRegisterPage(BaseCase):
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEE""")
         time.sleep(2)
         self.click("#login-btn")
+        # Verifiying output
+        self.assert_element("#message")
+        self.assert_text("One or more inputs have been entered incorrectly." +
+                         " Please try again.", "#message")
 
         # T5, a username between 2 and 20 characters is provided.
         self.type("#email-input", "jeevan_louie@gmail.com")
@@ -180,6 +202,10 @@ class FrontEndRegisterPage(BaseCase):
         self.type("#username-input", "Jeevan123")
         time.sleep(2)
         self.click("#login-btn")
+        # Verifying output
+        self.assert_element("#message")
+        self.assert_text(
+            "Login with your new account.", "#message")
 
     def test_r1_7_user_register(self, *_):
         """
@@ -191,13 +217,14 @@ class FrontEndRegisterPage(BaseCase):
         """
 
         # A user trying to register with an already registered email.
+        self.open(base_url + '/register')
         self.type("#email-input", "jeevan_louie@gmail.com")
         self.type("#password-input", "abc123DEF@")
         self.type("#username-input", "Jeevan123")
         time.sleep(2)
         self.click("#login-btn")
 
-        # Output checking.
+        # Verifiying output
         self.assert_element("#message")
-        self.assert_text("""One or more inputs have been entered incorrectly.
-            Please try again.""", "  # message")
+        self.assert_text("One or more inputs have been entered incorrectly." +
+                         " Please try again.", "#message")
