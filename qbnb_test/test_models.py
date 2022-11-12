@@ -175,7 +175,7 @@ def test_r4_2_create_listing():
 def test_r4_3_create_listing():
     """ 
     this function will check r4-5: if 
-    the price range is between 1 - 10,000 dollars
+    the price range is between 10 - 10,000 dollars
     """
     # too small price
     assert create_listing(

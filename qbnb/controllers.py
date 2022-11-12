@@ -162,7 +162,12 @@ def updating_listing():
             new_title = request.form['new-title']
             new_description = request.form['new-description']
             new_nightly_cost = request.form['new-cost']
-            new_nightly_cost = int(new_nightly_cost)
+            new_nightly_cost = new_nightly_cost
+            if new_nightly_cost == "":
+                new_nightly_cost = None
+            elif new_nightly_cost is not None:
+                new_nightly_cost = int(new_nightly_cost)
+
             updated = update_listing(
                 data, new_title, new_description, new_nightly_cost)
             if updated:
