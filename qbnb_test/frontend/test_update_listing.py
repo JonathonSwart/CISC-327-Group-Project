@@ -26,9 +26,10 @@ class UpdateListingPage(BaseCase):
         # Test 2
         self.find_element('//*[@id="new-cost"]').send_keys('36')
         self.find_element('/html/body/div[2]/div[2]/div/form/button').click()
-        self.assert_text("User2 Listing's:")  # Successful update  # Successful update
+        self.assert_text("User2 Listing's:")  # Successful update
 
-        # FUNCTIONALITY TESTING
+        # FUNCTIONALITY TESTING; Testing the create listing requirements from sprint 2
+        # R5-1,2,3,4
         # "Title must be alphanumeric Only"
         self.find_element(
             '/html/body/div[2]/div[2]/div/div[1]/div[11]/form/h4/button').click()
@@ -154,7 +155,7 @@ class UpdateListingPage(BaseCase):
         self.find_element('//*[@id="new-cost"]').send_keys('12')
         self.find_element('/html/body/div[2]/div[2]/div/form/button').click()
         self.assert_text("one or more inputs are incorrect")  # Failed to update
-        # Test 5
+        # Test 5; R5-
         self.find_element('/html/body/div[2]/div[2]/div/form/input[1]').send_keys("Final updated house")
         self.find_element('/html/body/div[2]/div[2]/div/form/input[2]').send_keys("This is the final updated description")
         self.find_element('//*[@id="new-cost"]').send_keys('41')
