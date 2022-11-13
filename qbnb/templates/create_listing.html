@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 <h1>{% block title %}Create Listing{% endblock %}</h1>
 
-<body class="mx-auto">
+<body class="mx-auto" id="body">
   {% block content %}
   <div class="row">
     <div class="col"></div>
@@ -9,14 +9,13 @@
       <div class="listing-section">
         <h1>Create Listing</h1>
         <form action="/create_listing" method="post">
-          <input type="text" class="form-control" id="title-input" name="title" placeholder="Title" required>
+          <input type="text" class="form-control" id="title-input" name="title" placeholder="Title">
           <input type="text" class="form-control" id="description-input" name="description" placeholder="Description"
             required>
-          <input type="number" class="form-control" id="cost-input" name="nightly-cost" placeholder="Nightly-cost"
-            min="10" max="10000" required>
+          <input type="number" class="form-control" id="cost-input" name="nightly-cost" placeholder="Nightly-cost">
           <button type="submit" id="create-ls-btn" class="btn btn-primary btn-cl btn-block">Create Listing</button>
         </form>
-        <a href="/" type="button" id="create-listing-btn" class="btn btn-secondary btn-cl btn-block">Back To
+        <a href="/" type="button" id="go-home-btn" class="btn btn-secondary btn-cl btn-block">Back To
           Home</a>
       </div>
       <h3 id="message">{{message}}</h3>
