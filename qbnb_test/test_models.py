@@ -1,4 +1,4 @@
-import sys 
+import sys
 from os import path
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))  # noqa
 from qbnb_test.conftest import pytest_sessionfinish, pytest_sessionstart  # noqa
@@ -11,6 +11,7 @@ from datetime import datetime  # noqa
 The reason we put no noqa is to get around an issue relating to vscode and
 import issues.
 """
+
 
 def test_env_start():
     '''
@@ -25,7 +26,7 @@ def test_r1_1_user_register():
     Testing R1-1 & 1 part of R1-5: If any of the provided inputs are empty, 
                                    the operation has failed.
     '''
-    
+
     assert register('User1', 'test_user@gmail.com', 'abc123DEF@') is True
     assert register('', '', '') is False
     assert register('User1', 'test_user@gmail.com', '') is False
