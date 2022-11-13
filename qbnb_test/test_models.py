@@ -1,4 +1,4 @@
-import sys 
+import sys
 from os import path
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))  # noqa
 from qbnb_test.conftest import pytest_sessionfinish, pytest_sessionstart  # noqa
@@ -11,6 +11,14 @@ from datetime import datetime  # noqa
 The reason we put no noqa is to get around an issue relating to vscode and
 import issues.
 """
+
+
+def test_env_start():
+    '''
+    Clearing the test enviroment. (Need this for pytest)
+    '''
+
+    pytest_sessionstart()
 
 
 def test_r1_1_user_register():
@@ -214,7 +222,6 @@ def test_r4_5_create_listing():
     and each posting on the database must have a unique title
     """
     # Checking is user has valid account made and valid email
-    print("this")
     assert create_listing(
         # no onwer_id 16 so should be false
         "House title5", "this is the house description", 1000, 160) is False
@@ -289,8 +296,16 @@ def test_r5_2_update_listing():
     assert update_listing(4, None, None, 6000) is True
 
 
+def test_env_end():
+    '''
+    Clearing the test enviroment. (Need this for pytest)
+    '''
+
+    pytest_sessionfinish()
+
+
 if __name__ == '__main__':
-    pytest_sessionstart()
+    test_env_start()
     """
     Testing user registration requirements, skipping ones that don't involve
     user inputs.
@@ -324,4 +339,4 @@ if __name__ == '__main__':
     """
     test_r5_1_update_listing()
     test_r5_2_update_listing()
-    pytest_sessionfinish()
+    test_env_end()
