@@ -12,7 +12,7 @@ class FrontEndRegisterPage(BaseCase):
         """
 
         # Resister a user
-        self.open(base_url+"/register")
+        self.open(base_url + "/register")
         self.type("#username-input", "Jonathon S")
         self.type("#email-input", "19js154@queensu.ca")
         self.type("#password-input", "abc123DEF@")
@@ -28,7 +28,6 @@ class FrontEndRegisterPage(BaseCase):
         self.click("#login-btn")
         self.assert_text_visible("Hello", "h1")
 
-
     def test_r3_1_update_user_profile(self, *_):
         """
         Uses functionality coverage to test that a user is only able to
@@ -37,7 +36,7 @@ class FrontEndRegisterPage(BaseCase):
         """
 
         # Logging in user
-        self.open(base_url+"/login")
+        self.open(base_url + "/login")
         self.type("#email-input", "19js154@queensu.ca")
         self.type("#password-input", "abc123DEF@")
         self.click("#login-btn")
@@ -51,7 +50,7 @@ class FrontEndRegisterPage(BaseCase):
         self.click("#update-profile-btn")
         self.assert_text_visible("Hello", "h1")
 
-        ## Check each input works independently
+        # Check each input works independently
         # Check username
         self.click('a:contains("Update Profile")')
         self.type("#username-input", "Ash K")
@@ -85,7 +84,7 @@ class FrontEndRegisterPage(BaseCase):
         """
 
         # Logging in user
-        self.open(base_url+"/login")
+        self.open(base_url + "/login")
         self.type("#email-input", "js1234@queensu.ca")
         self.type("#password-input", "abc123DEF@")
         self.click("#login-btn")

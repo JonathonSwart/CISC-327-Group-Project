@@ -25,7 +25,6 @@ class FrontEndRegisterPage(BaseCase):
          """
 
         # open web page
-        ##self.open(base_url)
         self.open(base_url+"/register")
         self.type("#username-input", "Jonathon S")
         self.type("#email-input", "19ks154@queensu.ca")
