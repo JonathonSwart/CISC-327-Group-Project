@@ -13,7 +13,7 @@ def get_random_string(length):
 
 
 class FrontEndRegisterPage(BaseCase):
-    def test_home_page(self, *_):
+    def test_R3_home_page(self, *_):
         """
         This function using seleniumbase testing to 
         check if all the buttons on the home page work and if the proper 
@@ -25,18 +25,23 @@ class FrontEndRegisterPage(BaseCase):
          """
 
         # open web page
-        self.open(base_url)
+        ##self.open(base_url)
+        self.open(base_url+"/register")
+        self.type("#username-input", "Jonathon S")
+        self.type("#email-input", "19ks154@queensu.ca")
+        self.type("#password-input", "abc123DEF@")
+        self.click("#login-btn")
 
         # home page will redirect to log in so we test if we on log in page
         self.assert_title('Log In')
         # extra tests to see we are in the right URL.
         get_started_url = self.get_current_url()
-        self.assert_equal(get_started_url, 'http://127.0.0.1:8081/login')
-        self.assert_true("login" in get_started_url)
+        self.assert_equal(get_started_url, 'http://127.0.0.1:8081/register')
+        self.assert_true("register" in get_started_url)
 
         # log in to get into home page
         # type in user name and password
-        self.type("#email-input", "19js154@queensu.ca")
+        self.type("#email-input", "19ks154@queensu.ca")
         self.type('#password-input', 'abc123DEF@')
         # Click submit button
         self.click('#login-btn')
@@ -96,7 +101,7 @@ class FrontEndRegisterPage(BaseCase):
         # check title of tab
         self.assert_title('Log In')
         # fill in all the feilds
-        self.type("#email-input", "19js154@queensu.ca")
+        self.type("#email-input", "19ks154@queensu.ca")
         self.type('#password-input', 'abc123DEF@')
         # click the submit button
         self.click('#login-btn')
@@ -144,7 +149,7 @@ class FrontEndRegisterPage(BaseCase):
         # check title of tab
         self.assert_title('Log In')
         # fill in all the feilds
-        self.type("#email-input", "19js154@queensu.ca")
+        self.type("#email-input", "19ks154@queensu.ca")
         self.type('#password-input', 'abc123DEF@')
         # click the submit button
         self.click('#login-btn')
@@ -194,7 +199,7 @@ class FrontEndRegisterPage(BaseCase):
         # check title of tab
         self.assert_title('Log In')
         # fill in all the feilds
-        self.type("#email-input", "19js154@queensu.ca")
+        self.type("#email-input", "19ks154@queensu.ca")
         self.type('#password-input', 'abc123DEF@')
         # click the submit button
         self.click('#login-btn')
@@ -269,7 +274,7 @@ class FrontEndRegisterPage(BaseCase):
         # check title of tab
         self.assert_title('Log In')
         # fill in all the feilds
-        self.type("#email-input", "19js154@queensu.ca")
+        self.type("#email-input", "19ks154@queensu.ca")
         self.type('#password-input', 'abc123DEF@')
         # click the submit button
         self.click('#login-btn')
@@ -324,7 +329,7 @@ class FrontEndRegisterPage(BaseCase):
         # check title of tab
         self.assert_title('Log In')
         # fill in all the feilds
-        self.type("#email-input", "19js154@queensu.ca")
+        self.type("#email-input", "19ks154@queensu.ca")
         self.type('#password-input', 'abc123DEF@')
         # click the submit button
         self.click('#login-btn')
@@ -390,7 +395,7 @@ class FrontEndRegisterPage(BaseCase):
         # check title of tab
         self.assert_title('Log In')
         # fill in all the feilds
-        self.type("#email-input", "19js154@queensu.ca")
+        self.type("#email-input", "19ks154@queensu.ca")
         self.type('#password-input', 'abc123DEF@')
         # click the submit button
         self.click('#login-btn')
