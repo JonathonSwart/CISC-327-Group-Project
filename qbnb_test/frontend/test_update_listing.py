@@ -28,20 +28,23 @@ class UpdateListingPage(BaseCase):
         self.find_element('//*[@id="new-cost"]').send_keys('1200')
         self.find_element('/html/body/div[2]/div[2]/div/form/button').click()
         self.assert_text("Ash K Listing's:")  # Successful update
-        # FUNCTIONALITY TESTING; Testing the create listing requirements from sprint 2
+        # FUNCTIONALITY TESTING; Testing the create listing requirements
+        #  from sprint 2
         # R5-1,2,3,4
         # "Title must be alphanumeric Only"
         self.find_element(
             '/html/body/div[2]/div[2]/div/div[1]/div/form/h4/button').click()
         # Test 1
         self.find_element(
-            '/html/body/div[2]/div[2]/div/form/input[1]').send_keys("upd@te house")
+            '/html/body/div[2]/div[2]/div/form/input[1]').send_keys(
+                "upd@te house")
         self.find_element('/html/body/div[2]/div[2]/div/form/button').click()
         # Failed to update
         self.assert_text("one or more inputs are incorrect")
         # Test 2
         self.find_element(
-            '/html/body/div[2]/div[2]/div/form/input[1]').send_keys("updated house")
+            '/html/body/div[2]/div[2]/div/form/input[1]').send_keys(
+                "updated house")
         self.find_element('/html/body/div[2]/div[2]/div/form/button').click()
         self.assert_text("Ash K Listing's:")  # Successful update
         # "Title only allows space if it is not a prefix and/or suffix"
@@ -49,27 +52,32 @@ class UpdateListingPage(BaseCase):
             '/html/body/div[2]/div[2]/div/div[1]/div/form/h4/button').click()
         # Test 1
         self.find_element(
-            '/html/body/div[2]/div[2]/div/form/input[1]').send_keys(" update house")
+            '/html/body/div[2]/div[2]/div/form/input[1]').send_keys(
+                " update house")
         self.find_element('/html/body/div[2]/div[2]/div/form/button').click()
         # Failed to update
         self.assert_text("one or more inputs are incorrect")
         # Test 2
         self.find_element(
-            '/html/body/div[2]/div[2]/div/form/input[1]').send_keys("update house ")
+            '/html/body/div[2]/div[2]/div/form/input[1]').send_keys(
+                "update house ")
         self.find_element('/html/body/div[2]/div[2]/div/form/button').click()
         # Failed to update
         self.assert_text("one or more inputs are incorrect")
 
         # Title of product is no longer than 80 characters
         # Test 1
-        self.find_element('/html/body/div[2]/div[2]/div/form/input[1]').send_keys(
-            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget")
+        self.find_element(
+            '/html/body/div[2]/div[2]/div/form/input[1]').send_keys(
+            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit."+
+            " Aenean commodo ligula eget")
         self.find_element('/html/body/div[2]/div[2]/div/form/button').click()
         # Failed to update
         self.assert_text("one or more inputs are incorrect")
         # Test 2
         self.find_element(
-            '/html/body/div[2]/div[2]/div/form/input[1]').send_keys("Updated house")
+            '/html/body/div[2]/div[2]/div/form/input[1]').send_keys(
+                "Updated house")
         self.find_element('/html/body/div[2]/div[2]/div/form/button').click()
         self.assert_text("Ash K Listing's:")  # Successful update
         # Description has a mimimum length of 20 characters
@@ -77,12 +85,14 @@ class UpdateListingPage(BaseCase):
             '/html/body/div[2]/div[2]/div/div[1]/div/form/h4/button').click()
         # Test 1
         self.find_element(
-            '/html/body/div[2]/div[2]/div/form/input[2]').send_keys("min len 20")
+            '/html/body/div[2]/div[2]/div/form/input[2]').send_keys(
+                "min len 20")
         self.find_element('/html/body/div[2]/div[2]/div/form/button').click()
         # Failed to update
         self.assert_text("one or more inputs are incorrect")
         # Test 2
-        self.find_element('/html/body/div[2]/div[2]/div/form/input[2]').send_keys(
+        self.find_element(
+            '/html/body/div[2]/div[2]/div/form/input[2]').send_keys(
             "This description is over 20 characters")
         self.find_element('/html/body/div[2]/div[2]/div/form/button').click()
         self.assert_text("Ash K Listing's:")  # Successful update
