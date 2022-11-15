@@ -208,7 +208,7 @@ class FrontEndRegisterPage(BaseCase):
         # shotgun testing requires random values ran multiple times
         # so we use for loop
         # shotgun input partition test for values < 20 chars
-        for i in range(0, 10):
+        for i in range(0, 5):
             rand_description = get_random_string(random.randint(1, 19))
             self.type('#title-input', 'test title3')
             self.type('#description-input',
@@ -225,7 +225,7 @@ class FrontEndRegisterPage(BaseCase):
         # test should provide fail message output
         # due to long length of test, we do only 10 iterations. But
         # this can be changed as required
-        for i in range(0, 10):
+        for i in range(0, 5):
             rand_description = get_random_string(random.randint(2000, 2100))
             self.type('#title-input', 'test title3')
             self.type('#description-input',
@@ -240,7 +240,7 @@ class FrontEndRegisterPage(BaseCase):
                 "FAILED: Try again with different inputs", "#message")
         # now we test with valid range
         test_title = 0
-        for i in range(0, 10):
+        for i in range(0, 5):
             rand_description = get_random_string(random.randint(21, 40))
             # automate random generation titles so there are no dups
             test_title = get_random_string(random.randint(10, 15))
@@ -282,7 +282,7 @@ class FrontEndRegisterPage(BaseCase):
         # test random values where title is longer than descirption
         # test should pass here as we won't be able to make account with
         # title < descirption
-        for i in range(0, 10):
+        for i in range(0, 5):
             title_string = get_random_string(random.randint(30, 40))
             description_string = get_random_string(random.randint(10, 20))
             self.type('#title-input', title_string)
@@ -297,7 +297,7 @@ class FrontEndRegisterPage(BaseCase):
             self.assert_text(
                 "FAILED: Try again with different inputs", "#message")
         # now we try but title > description
-        for i in range(0, 10):
+        for i in range(0, 5):
             title_string = get_random_string(random.randint(10, 20))
             description_string = get_random_string(random.randint(30, 50))
             self.type('#title-input', title_string)
@@ -336,7 +336,7 @@ class FrontEndRegisterPage(BaseCase):
             listing_url, 'http://127.0.0.1:8081/create_listing')
         # begin shotgun test
         # test should always fail since price < 10
-        for i in range(0, 10):
+        for i in range(0, 5):
             title_string = get_random_string(random.randint(10, 20))
             description_string = get_random_string(random.randint(30, 40))
             self.type('#title-input', title_string)
@@ -350,7 +350,7 @@ class FrontEndRegisterPage(BaseCase):
             # is outside required length
 
         # new test, should always fail since price > 10,000
-        for i in range(0, 10):
+        for i in range(0, 5):
             title_string = get_random_string(random.randint(10, 20))
             description_string = get_random_string(random.randint(30, 40))
             self.type('#title-input', title_string)
@@ -363,7 +363,7 @@ class FrontEndRegisterPage(BaseCase):
             # is outside required length
             self.click('#body')
         # test parition for valid range of prices
-        for i in range(0, 20):
+        for i in range(0, 5):
             title_string = get_random_string(random.randint(10, 20))
             description_string = get_random_string(random.randint(30, 40))
             self.type('#title-input', title_string)
@@ -400,9 +400,9 @@ class FrontEndRegisterPage(BaseCase):
         listing_url = self.get_current_url()
         self.assert_equal(
             listing_url, 'http://127.0.0.1:8081/create_listing')
-        for i in range(0, 10):
+        for i in range(0, 5):
             title_string = get_random_string(random.randint(10, 15))
-            for j in range(0, 10):
+            for j in range(0, 5):
                 self.type('#title-input', title_string)
                 self.type('#description-input',
                           'dummy description that can be the same')
