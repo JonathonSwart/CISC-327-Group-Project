@@ -36,7 +36,7 @@ class FrontEndRegisterPage(BaseCase):
 
         # log in to get into home page
         # type in user name and password
-        self.type("#email-input", "19js154@queensu.ca")
+        self.type("#email-input", "test_user2@gmail.com")
         self.type('#password-input', 'abc123DEF@')
         # Click submit button
         self.click('#login-btn')
@@ -96,7 +96,7 @@ class FrontEndRegisterPage(BaseCase):
         # check title of tab
         self.assert_title('Log In')
         # fill in all the feilds
-        self.type("#email-input", "19js154@queensu.ca")
+        self.type("#email-input", "test_user2@gmail.com")
         self.type('#password-input', 'abc123DEF@')
         # click the submit button
         self.click('#login-btn')
@@ -144,7 +144,7 @@ class FrontEndRegisterPage(BaseCase):
         # check title of tab
         self.assert_title('Log In')
         # fill in all the feilds
-        self.type("#email-input", "19js154@queensu.ca")
+        self.type("#email-input", "test_user2@gmail.com")
         self.type('#password-input', 'abc123DEF@')
         # click the submit button
         self.click('#login-btn')
@@ -194,7 +194,7 @@ class FrontEndRegisterPage(BaseCase):
         # check title of tab
         self.assert_title('Log In')
         # fill in all the feilds
-        self.type("#email-input", "19js154@queensu.ca")
+        self.type("#email-input", "test_user2@gmail.com")
         self.type('#password-input', 'abc123DEF@')
         # click the submit button
         self.click('#login-btn')
@@ -208,7 +208,7 @@ class FrontEndRegisterPage(BaseCase):
         # shotgun testing requires random values ran multiple times
         # so we use for loop
         # shotgun input partition test for values < 20 chars
-        for i in range(0, 100):
+        for i in range(0, 10):
             rand_description = get_random_string(random.randint(1, 19))
             self.type('#title-input', 'test title3')
             self.type('#description-input',
@@ -269,7 +269,7 @@ class FrontEndRegisterPage(BaseCase):
         # check title of tab
         self.assert_title('Log In')
         # fill in all the feilds
-        self.type("#email-input", "19js154@queensu.ca")
+        self.type("#email-input", "test_user2@gmail.com")
         self.type('#password-input', 'abc123DEF@')
         # click the submit button
         self.click('#login-btn')
@@ -324,7 +324,7 @@ class FrontEndRegisterPage(BaseCase):
         # check title of tab
         self.assert_title('Log In')
         # fill in all the feilds
-        self.type("#email-input", "19js154@queensu.ca")
+        self.type("#email-input", "test_user2@gmail.com")
         self.type('#password-input', 'abc123DEF@')
         # click the submit button
         self.click('#login-btn')
@@ -390,7 +390,7 @@ class FrontEndRegisterPage(BaseCase):
         # check title of tab
         self.assert_title('Log In')
         # fill in all the feilds
-        self.type("#email-input", "19js154@queensu.ca")
+        self.type("#email-input", "test_user2@gmail.com")
         self.type('#password-input', 'abc123DEF@')
         # click the submit button
         self.click('#login-btn')
