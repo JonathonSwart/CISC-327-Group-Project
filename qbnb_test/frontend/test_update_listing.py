@@ -69,7 +69,7 @@ class UpdateListingPage(BaseCase):
         # Test 1
         self.find_element(
             '/html/body/div[2]/div[2]/div/form/input[1]').send_keys(
-            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit."+
+            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit." +
             " Aenean commodo ligula eget")
         self.find_element('/html/body/div[2]/div[2]/div/form/button').click()
         # Failed to update

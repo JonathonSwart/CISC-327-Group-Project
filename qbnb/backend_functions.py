@@ -276,7 +276,8 @@ def update_listing(listing_id, new_title, new_description, new_nightly_cost):
     if (new_nightly_cost is None or new_nightly_cost == ""):
         pass
     else:
-        if (10 > new_nightly_cost or new_nightly_cost > 10000 or new_nightly_cost
+        if (10 > new_nightly_cost or new_nightly_cost > 10000 or
+            new_nightly_cost
                 < listing.nightly_cost):
             bool_return = False
         else:
