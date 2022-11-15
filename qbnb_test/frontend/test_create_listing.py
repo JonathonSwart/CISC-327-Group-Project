@@ -208,7 +208,7 @@ class FrontEndRegisterPage(BaseCase):
         # shotgun testing requires random values ran multiple times
         # so we use for loop
         # shotgun input partition test for values < 20 chars
-        for i in range(0, 100):
+        for i in range(0, 10):
             rand_description = get_random_string(random.randint(1, 19))
             self.type('#title-input', 'test title3')
             self.type('#description-input',
