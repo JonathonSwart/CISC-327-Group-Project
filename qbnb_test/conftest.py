@@ -8,7 +8,7 @@ from os import path
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))  # noqa
 from qbnb.models.model_handler import db  # noqa
 from qbnb import app  # noqa
-from qbnb.__main__  import FLASK_PORT
+from qbnb.__main__ import FLASK_PORT
 
 
 def pytest_sessionstart():
