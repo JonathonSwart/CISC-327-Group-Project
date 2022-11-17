@@ -10,3 +10,6 @@ include
 archived_logs
 .pytest_cache
 share
+var
+Scripts
+Lib

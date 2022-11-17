@@ -6,14 +6,15 @@ import threading
 from werkzeug.serving import make_server
 from os import path
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))  # noqa
-from qbnb.models.model_handler import db
-from qbnb import app
+from qbnb.models.model_handler import db  # noqa
+from qbnb import app  # noqa
+
 
 def pytest_sessionstart():
     '''
     Delete database file if existed. So testing can start fresh.
     '''
-    
+
     print('Setting up environment..')
     db_file = 'qbnb/db.sqlite'
     if os.path.exists('qbnb/db.sqlite'):
@@ -23,6 +24,7 @@ def pytest_sessionstart():
         os.remove('instance/db.sqlite')
         db.create_all()
 
+
 def pytest_sessionfinish():
     '''
     Optional function called when testing is done.
@@ -30,7 +32,9 @@ def pytest_sessionfinish():
     '''
     print("End of session.")
 
+
 base_url = 'http://127.0.0.1:{}'.format(8081)
+
 
 class ServerThread(threading.Thread):
 
