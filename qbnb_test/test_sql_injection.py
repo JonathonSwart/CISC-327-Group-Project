@@ -14,7 +14,7 @@ import issues.
 
 def test_sql_injection_test():
     pytest_sessionstart()
-    with open('sql_injection.txt', 'r') as file:
+    with open('qbnb_test/sql_injection.txt', 'r') as file:
         for payload in file:
             print("The current payload is : " + payload)
             # SQL injection testing with the register function.
