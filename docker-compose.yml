@@ -1,7 +1,7 @@
 version: "2"
 services:
   qbnb-web:
-    image: lucagalati31/qbnb:version_info
+    image: lucagalati31/qbnb
     depends_on:
       - qbnb-db
     links:
