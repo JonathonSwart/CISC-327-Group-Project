@@ -8,6 +8,7 @@ from os import path
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))  # noqa
 from qbnb.models.model_handler import db  # noqa
 from qbnb import app  # noqa
+from qbnb.__main__ import FLASK_PORT  # noqa
 
 
 def pytest_sessionstart():
@@ -33,7 +34,7 @@ def pytest_sessionfinish():
     print("End of session.")
 
 
-base_url = 'http://127.0.0.1:{}'.format(8081)
+base_url = 'http://127.0.0.1:{}'.format(FLASK_PORT)
 
 
 class ServerThread(threading.Thread):
@@ -42,7 +43,7 @@ class ServerThread(threading.Thread):
         threading.Thread.__init__(self)
         # import necessary routes
         from qbnb import controllers
-        self.srv = make_server('127.0.0.1', 8081, app)
+        self.srv = make_server('127.0.0.1', FLASK_PORT, app)
         self.ctx = app.app_context()
         self.ctx.push()
 

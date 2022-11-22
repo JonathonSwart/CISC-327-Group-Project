@@ -13,3 +13,5 @@ share
 var
 Scripts
 Lib
+lib64
+python3.10
