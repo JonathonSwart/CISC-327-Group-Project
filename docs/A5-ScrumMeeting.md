@@ -16,7 +16,7 @@ with the project.
 4. What is the plan for the days before the deadline.
 - Fix the register function so it doesnt get stuck on certian sql.
 
-# Luca & Ash 
+# Luca & Ash
 1. What is the branch he/she worked on (has to be pushed to the repo).
 - Luca and Ash worked in the 'Luca-dev' branch.
 2. What is the progress so far.
