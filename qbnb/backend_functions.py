@@ -335,11 +335,9 @@ def create_booking(user_id, listing_id, booking_date):
             if (booking.date == booking_date):
                 print("Time found")
                 return False
-
-    print(user_id, listing_id, booking_date)
     new_booking = Booking(user_id=user_id, listing_id=listing_id,
-                            price=listing_object.nightly_cost,
-                            date=booking_date)
+                          price=listing_object.nightly_cost,
+                          date=booking_date)
     db.session.add(new_booking)
 
     db.session.commit()
