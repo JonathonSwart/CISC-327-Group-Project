@@ -291,3 +291,54 @@ def update_listing(listing_id, new_title, new_description, new_nightly_cost):
         listing.last_modified_date = datetime.now()
         db.session.commit()
     return True
+
+
+def create_booking(user_id, listing_id, booking_date):
+    '''
+    Create a booking entry in the database based off the user chooing
+    to create the booking.
+    Parameters:
+            user_id (int):              The id of the user booking the 
+                                        listing.
+            lisitng_id (int) :          The id of the listing having a 
+                                        booking being created for it.
+            booking_date (datetime) :   The date in which the user is 
+                                        booking the listing.
+        Returns:
+            A user object if the login is successful otherwise None, if input
+            fields are invalid None is returned too.
+    '''
+    # First check that the user_id does exist in the data base.
+    user_object = User.query.filter_by(id=user_id).first()
+    if user_object is None:
+        print("User no exist.")
+        return False
+    # Next check that the listing does exist in the data base.
+    listing_object = Listing.query.filter_by(id=listing_id).first()
+    if listing_object is None:
+        print("Lising no exist")
+        return False
+    # Make sure that the user is not booking their own listing.
+    if (listing_object.owner_id == user_id):
+        print("user owns listing")
+        return False
+    # Check whether the user can afford the listing.
+    if (user_object.balance < listing_object.nightly_cost):
+        print("user no afford")
+        return False
+    # Check whether bookings exists for the listing, make sure no booking
+    # on the same date exists.
+    listing_bookings = Booking.query.filter_by(listing_id=listing_id).all()
+    if (len(listing_bookings) > 0):
+        # Loop through all the bookings and check the date they were created.
+        for booking in listing_bookings:
+            if (booking.date == booking_date):
+                print("Time found")
+                return False
+    new_booking = Booking(user_id=user_id, listing_id=listing_id,
+                          price=listing_object.nightly_cost,
+                          date=booking_date)
+    db.session.add(new_booking)
+
+    db.session.commit()
+    return True
