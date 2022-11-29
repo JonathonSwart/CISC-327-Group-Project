@@ -133,6 +133,11 @@ def booking():
     only other user's booking will be dispalys, however, 
     backend code exists to protect this too.
     '''
+    if 'logged_in' in session:
+        pass
+    else:
+        return redirect('/login')
+    return render_template('bookings.html')
 
 
 @app.route('/update_profile', methods=['POST', 'GET'])
