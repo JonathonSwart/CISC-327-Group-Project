@@ -148,7 +148,7 @@ input:focus::placeholder {
 background-color: white;
 border-color: #5A5766;
 margin-bottom: 25px;
-margin-top:50%;
+margin-top:10%;
 margin-left: 0px;
 margin-right: 0px;
 padding-bottom: 20px;
@@ -195,4 +195,46 @@ font-size: 1.2em;
 
 .booking-btn{
   text-align: center;
+}
+
+.display-bookings h6{
+  color:#007bff;
+}
+
+.display-bookings{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.sec{
+min-width: 33%;
+text-align: center;
+max-height: 100%;
+overflow: auto;
+
+}
+
+.view{
+ display: flex;
+ justify-content: center;
+}
+
+.view input{
+  width: 75%;
+  box-shadow: 0px 0px 5px 1px #0b0b0c !important;
+}
+
+.final{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.final input{
+  margin: auto;
+  margin-bottom: 20px;
 }

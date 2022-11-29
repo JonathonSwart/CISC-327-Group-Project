@@ -124,7 +124,7 @@ def logout():
     return redirect('/')
 
 
-@app.route('/bookings')
+@app.route('/bookings', methods=['GET', 'POST'])
 def booking():
     '''
     Will redirect to a page where all the viewable bookings can be seen. 
@@ -137,7 +137,28 @@ def booking():
         pass
     else:
         return redirect('/login')
-    return render_template('bookings.html')
+    id = session['logged_in']
+    listings = Listing.query.all()
+    # remove any of the user's own listings from the list and pass onto the front end
+    for i in listings:
+        if (i.owner_id == id):
+            listings.remove(i)
+    return render_template('bookings.html', listings=listings)
+
+
+@app.route('/reserving', methods=['GET', 'POST'])
+def reserve():
+    '''
+    This is the route for booking a listing with the avaible dates.
+    '''
+    if 'logged_in' in session:
+        pass
+    else:
+        return redirect('/login')
+    if request.method == "POST":
+        data = request.form['data']
+        id = session['logged_in']
+    return render_template('reserve.html')
 
 
 @app.route('/update_profile', methods=['POST', 'GET'])
