@@ -15,6 +15,36 @@
           <a class="btn btn-primary" id="logout-btn" href="/logout" role="button">Logout</a>
         </div>
       </div>
+
+      <div class="booking-section">
+        <h1 id="h1book">Your bookings:</h1>
+        <hr>
+        <div class="container">
+          <div class="inner-container">
+            {% for listing in final_listing %}
+            <h5> Title: {{ listing.title }} </h5>
+            <hr>
+            {% endfor %}
+          </div>
+          <div class="inner-container">
+            {% for booking in bookings %}
+            <h5> Price: ${{ booking.price }} </h5>
+            <hr>
+            {% endfor %}
+          </div>
+          <div class="inner-container">
+            {% for booking in bookings %}
+            <h5> Date: {{ booking.date }}</h5>
+            <hr>
+            {% endfor %}
+          </div>
+
+        </div>
+        <div class="booking-btn">
+          <a class="btn btn-primary" id="view-booking-btn" href="/bookings" role="button">View Avaible
+            Listings</a>
+        </div>
+      </div>
     </div>
     <div class="col"></div>
   </div>

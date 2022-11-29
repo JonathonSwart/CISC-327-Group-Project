@@ -143,3 +143,56 @@ input:focus::placeholder {
 #update-btn {
   margin-top: 5px;
 }
+
+.booking-section{
+background-color: white;
+border-color: #5A5766;
+margin-bottom: 25px;
+margin-top:50%;
+margin-left: 0px;
+margin-right: 0px;
+padding-bottom: 20px;
+border-radius:35px;
+box-shadow: 0 0 5px #5a5766 !important;
+max-width: 100%;
+padding-left: 0px ;
+padding-right: 0px;
+
+}
+
+.container{
+  display: flex;
+  flex-direction: row;
+  justify-content:left;
+  margin-left: 40px !important;
+}
+
+#h1book{
+  margin: 0px;
+  padding-top: 10px;
+}
+
+.list-booking{
+  margin-right: 200px;
+  margin-bottom: 20px;
+  padding-left:15px;
+  padding-right: 15px;
+}
+
+.inner-container{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.booking-btn a{
+  margin: auto;
+  width: 80%;
+}
+
+.container h5{
+font-size: 1.2em;
+}
+
+.booking-btn{
+  text-align: center;
+}

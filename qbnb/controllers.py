@@ -91,7 +91,28 @@ def register_post():
 @app.route('/', methods=['GET', 'POST'])
 @authenticate
 def home(user):
-    return render_template('home.html', user=user)
+    id = user.id
+    bookings = Booking.query.filter_by(user_id=id).all()
+    listings_id = []
+    # remove time date from the booking array
+    for i in range(0, len(bookings)):
+        bookings[i].date = bookings[i].date.date()
+    # go through each booking of the user, grabbing respective listing id
+    # add all the respective listing id's into it's own list
+    for i in range(len(bookings)):
+        listings_id.append(bookings[i].listing_id)
+    listings = []
+    # now we have a 2d array
+    for i in listings_id:
+        listings.append(Listing.query.filter_by(id=i).all())
+    # convert to 1d
+    final_listing = []
+    for i in listings:
+        for j in i:
+            final_listing.append(j)
+    print(final_listing)
+
+    return render_template('home.html', user=user, bookings=bookings, final_listing=final_listing)
 
 
 @app.route('/logout')
@@ -103,6 +124,17 @@ def logout():
     return redirect('/')
 
 
+@app.route('/bookings')
+def booking():
+    '''
+    Will redirect to a page where all the viewable bookings can be seen. 
+    Cannot view this page unless user is logged in.
+    To avoid being able to book your own booking, 
+    only other user's booking will be dispalys, however, 
+    backend code exists to protect this too.
+    '''
+
+
 @app.route('/update_profile', methods=['POST', 'GET'])
 def update_profiles():
     """
@@ -110,6 +142,10 @@ def update_profiles():
     postal code inputted by the user. If the user successfully updates
     their profile, they will be redirected to the home page.
     """
+    if 'logged_in' in session:
+        pass
+    else:
+        return redirect('/login')
 
     if request.method == "POST":
         username = request.form['username']
