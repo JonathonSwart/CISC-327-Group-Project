@@ -243,3 +243,7 @@ overflow: auto;
   display: block;
   margin-bottom: 20px;
 }
+
+.col{
+  margin-bottom: 3%;
+}
