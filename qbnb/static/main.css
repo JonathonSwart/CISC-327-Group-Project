@@ -247,3 +247,13 @@ overflow: auto;
 .col{
   margin-bottom: 3%;
 }
+.description-p{
+  font-weight: bold;
+  margin-left: 5px;
+  margin-top: 0;
+  margin-bottom: 10px;
+  display: inline;
+  overflow: hidden;
+  white-space: nowrap;
+ 
+}
