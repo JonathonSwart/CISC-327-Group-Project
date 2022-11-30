@@ -113,8 +113,8 @@ def home(user):
             final_listing.append(j)
     print(final_listing)
 
-    return render_template('home.ht\
-        ml', user=user, bookings=bookings, final_listing=final_listing)
+    return render_template('home.html', user=user,
+                           bookings=bookings, final_listing=final_listing)
 
 
 @app.route('/logout')
@@ -141,8 +141,8 @@ def booking():
         return redirect('/login')
     id = session['logged_in']
     listings = Listing.query.all()
-    # remove any of the user's own listings from
-    # the list and pass onto the front end
+    # remove any of the user's own listings from the
+    # list and pass onto the front end
     for i in listings:
         if (i.owner_id == id):
             listings.remove(i)
@@ -162,8 +162,8 @@ def reserve():
         message = ""
         listing_id = request.form['data']
         id = session['logged_in']
-        return render_template('rese\
-            rve.html', listing_id=listing_id, id=id, message=message)
+        return render_template('reserve.html', listing_id=listing_id,
+                               id=id, message=message)
 
     return render_template('reserve.html')
 
@@ -187,8 +187,9 @@ def book():
         if booked:
             return redirect('/')
         else:
-            return render_template('reserve.html', message="The\
-                re was a problem making this booking")
+            return render_template(
+                'reserve.html',
+                message="There was a problem making this booking")
 
     return render_template('reserve.html', message="")
 
@@ -289,8 +290,9 @@ def create_listings():
                 return render_template('create_listing.html',
                                        message="SUCCESS: Listing Created")
             else:
-                return render_template('create_listing.html', message='FA\
-                    ILED: Try again with different inputs')
+                return render_template('create_listing.html',
+                                       message='FAILED:\
+                                       Try again with different inputs')
         return render_template('create_listing.html')
     else:
         return redirect('/login')
