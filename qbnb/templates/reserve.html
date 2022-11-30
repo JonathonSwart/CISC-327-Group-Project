@@ -13,8 +13,15 @@
                 <h1>Reserve This Listing Today</h1>
                 <hr>
                 <div class="final">
-                    <input type="datetime-local" name="datetime">
-                    <input class="btn btn-primary" type="submit" name="submit" value="book this date">
+                    <form action="/reserved" method="post">
+                        <input type="date" name="datetime">
+                        <input class="btn btn-primary" type="submit" name="submit" value="book this date">
+                        <input type="hidden" id="text" name="listing_id" value="{{listing_id}}">
+                        <input type="hidden" id="text" name="id" value="{{id}}">
+                    </form>
+                    <form action="/" class="go-home">
+                        <button class="btn btn-primary" id="home-btn" type="submit">Go Home</button>
+                    </form>
                     <h3>{{ message }}</h3>
                 </div>
             </div>

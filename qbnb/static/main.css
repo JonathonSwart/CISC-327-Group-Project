@@ -18,6 +18,10 @@ body {
   border-radius: 35px !important;
   box-shadow: 0 0 5px #5a5766 !important;
 }
+
+.login-section h4{
+  text-align: center;
+}
 .listing-section{
   background-color: white !important;
   padding-left: 20px !important;
@@ -236,5 +240,6 @@ overflow: auto;
 
 .final input{
   margin: auto;
+  display: block;
   margin-bottom: 20px;
 }

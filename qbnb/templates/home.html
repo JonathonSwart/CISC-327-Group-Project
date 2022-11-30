@@ -8,14 +8,15 @@
     <div class="col">
       <div class="login-section">
         <h1>Hello {{user.user_name}}!</h1>
-        <div class="links">
-          <a class="btn btn-primary" id="create-listing-btn" href="/create_listing" role="button">Create Listing</a>
-          <a class="btn btn-primary" id="show-listing-btn" href="/listing" role="button">Listings</a>
-          <a class="btn btn-primary" id="update-profile-btn" href="/update_profile" role="button">Update Profile</a>
-          <a class="btn btn-primary" id="logout-btn" href="/logout" role="button">Logout</a>
-        </div>
+        <h4>Your balance: ${{user.balance}}</h6>
+          <div class="links">
+            <a class="btn btn-primary" id="create-listing-btn" href="/create_listing" role="button">Create Listing</a>
+            <a class="btn btn-primary" id="show-listing-btn" href="/listing" role="button">Listings</a>
+            <a class="btn btn-primary" id="update-profile-btn" href="/update_profile" role="button">Update Profile</a>
+            <a class="btn btn-primary" id="logout-btn" href="/logout" role="button">Logout</a>
+          </div>
       </div>
-
+      <h1>{{message}}</h1>
       <div class="booking-section">
         <h1 id="h1book">Your bookings:</h1>
         <hr>

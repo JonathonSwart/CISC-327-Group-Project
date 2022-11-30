@@ -3,8 +3,9 @@ from .models.Booking import Booking
 from .models.Listing import Listing
 from .models.Reviews import Reviews
 from .models.User import User
+from datetime import datetime
 from .backend_functions import create_listing, update_listing, register, \
-    update_profile, login
+    update_profile, login, create_booking
 
 from qbnb import app
 
@@ -156,9 +157,36 @@ def reserve():
     else:
         return redirect('/login')
     if request.method == "POST":
-        data = request.form['data']
+        message = ""
+        listing_id = request.form['data']
         id = session['logged_in']
+        return render_template('reserve.html', listing_id=listing_id, id=id, message=message)
+
     return render_template('reserve.html')
+
+
+@app.route('/reserved', methods=['POST', 'GET'])
+def book():
+    if 'logged_in' in session:
+        pass
+    else:
+        return redirect('/login')
+    if request.method == "POST":
+        listing_id = request.form['listing_id']
+        id = request.form['id']
+        date = request.form['datetime']
+        date = date.split('-')
+        for i in range(0, len(date)):
+            date[i] = date[i].lstrip('0')
+        final_date = datetime(
+            int(date[0]), int(date[1]), int(date[2]))
+        booked = create_booking(id, listing_id, final_date)
+        if booked:
+            return redirect('/')
+        else:
+            return render_template('reserve.html', message="There was a problem making this booking")
+
+    return render_template('reserve.html', message="")
 
 
 @app.route('/update_profile', methods=['POST', 'GET'])
