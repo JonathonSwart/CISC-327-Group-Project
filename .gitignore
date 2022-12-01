@@ -13,5 +13,5 @@ share
 var
 Scripts
 Lib
-.pyre/
-mysql_data
+lib64
+python3.10

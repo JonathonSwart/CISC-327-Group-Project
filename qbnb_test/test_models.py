@@ -3,7 +3,8 @@ from os import path
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))  # noqa
 from qbnb_test.conftest import pytest_sessionfinish, pytest_sessionstart  # noqa
 from qbnb.backend_functions import (create_listing, login, register,  # noqa
-                                    update_profile, update_listing)  # noqa
+                                    update_profile, update_listing,  # noqa
+                                    create_booking)  # noqa
 from datetime import datetime  # noqa
 
 
@@ -296,6 +297,56 @@ def test_r5_2_update_listing():
     assert update_listing(4, None, None, 6000) is True
 
 
+def test_r6_1_create_booking():
+    """
+    Test R6-R1: A user can book a listing.
+    """
+    # First create a new listing we can test with.
+    create_listing("Booking Sys Test", "Testing the Booking System",
+                   10, 2)
+
+    booking_date = datetime(2022, 11, 23)
+    assert create_booking(1, 6, booking_date) is True
+    assert create_booking(None, 6, booking_date) is False
+
+
+def test_r6_2_create_booking():
+    """
+    Test R6-R2: A user cannot book their own listing.
+    """
+    booking_date = datetime(2022, 11, 24)
+    assert create_booking(2, 6, booking_date) is False
+    assert create_booking(1, 1, booking_date) is False
+
+
+def test_r6_3_create_booking():
+    '''
+    Test R6-R3: A user cannot book a listing that costs
+    more than their balance.
+    '''
+    # First create a new listing we can test with.
+    create_listing("Booking Sys Test2", "Testing the Booking System",
+                   10000, 2)
+    create_listing("Booking Sys Test3", "Testing the Booking System",
+                   30, 2)
+    booking_date = datetime(2022, 11, 25)
+    assert create_booking(1, 7, booking_date) is False
+    assert create_booking(1, 8, booking_date) is True
+
+
+def test_r6_4_create_booking():
+    '''
+    A user cannot book an already booked listing on a specific day.
+    '''
+    # Create a new listing we can work with
+    create_listing("Booking Sys Test4", "Testing the Booking System",
+                   30, 2)
+    booking_date = datetime(2023, 1, 1)
+    assert create_booking(1, 9, booking_date) is True
+    assert create_booking(3, 9, booking_date) is False
+    assert create_booking(1, 9, booking_date) is False
+
+
 def test_env_end():
     '''
     Clearing the test enviroment. (Need this for pytest)
@@ -339,4 +390,11 @@ if __name__ == '__main__':
     """
     test_r5_1_update_listing()
     test_r5_2_update_listing()
+    """
+    Testing create booking requirements.
+    """
+    test_r6_1_create_booking()
+    test_r6_2_create_booking()
+    test_r6_3_create_booking()
+    test_r6_4_create_booking()
     test_env_end()

@@ -10,8 +10,8 @@ class Booking(db.Model):
     stored in the database."""
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, unique=True, nullable=False)
-    listing_id = db.Column(db.Integer, unique=True, nullable=False)
+    user_id = db.Column(db.Integer, nullable=False)
+    listing_id = db.Column(db.Integer, nullable=False)
     price = db.Column(db.Integer, nullable=False)
     date = db.Column(db.DateTime, nullable=False)
 

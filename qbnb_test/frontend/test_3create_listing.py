@@ -31,7 +31,7 @@ class FrontEndRegisterPage(BaseCase):
         self.assert_title('Log In')
         # extra tests to see we are in the right URL.
         get_started_url = self.get_current_url()
-        self.assert_equal(get_started_url, 'http://127.0.0.1:8081/login')
+        self.assert_equal(get_started_url, base_url + '/login')
         self.assert_true("login" in get_started_url)
 
         # log in to get into home page
@@ -43,41 +43,41 @@ class FrontEndRegisterPage(BaseCase):
 
         # check we are in home page
         get_started_url = self.get_current_url()
-        self.assert_equal(get_started_url, 'http://127.0.0.1:8081/')
+        self.assert_equal(get_started_url, base_url + '/')
 
         # our input testing begins here
         # test what route each input brings us to
         self.click('#create-listing-btn')
         get_started_url = self.get_current_url()
         self.assert_equal(
-            get_started_url, 'http://127.0.0.1:8081/create_listing')
+            get_started_url, base_url + '/create_listing')
         # click logout button
         self.click('#go-home-btn')
         get_started_url = self.get_current_url()
-        self.assert_equal(get_started_url, 'http://127.0.0.1:8081/')
+        self.assert_equal(get_started_url, base_url + '/')
 
         # test show listing button
         self.click('#show-listing-btn')
         get_started_url = self.get_current_url()
-        self.assert_equal(get_started_url, 'http://127.0.0.1:8081/listing')
+        self.assert_equal(get_started_url, base_url + '/listing')
         self.click('#home-btn')
         # go back home
         get_started_url = self.get_current_url()
-        self.assert_equal(get_started_url, 'http://127.0.0.1:8081/?')
+        self.assert_equal(get_started_url, base_url + '/?')
 
         # test update user porifle button
         self.click('#update-profile-btn')
         get_started_url = self.get_current_url()
         self.assert_equal(
-            get_started_url, 'http://127.0.0.1:8081/update_profile')
+            get_started_url, base_url + '/update_profile')
         # go back home
         self.click('#update-btn')
         get_started_url = self.get_current_url()
-        self.assert_equal(get_started_url, 'http://127.0.0.1:8081/')
+        self.assert_equal(get_started_url, base_url + '/')
         # test logout function
         self.click('#logout-btn')
         get_started_url = self.get_current_url()
-        self.assert_equal(get_started_url, 'http://127.0.0.1:8081/login')
+        self.assert_equal(get_started_url, base_url + '/login')
         # end test
         self.assert_true("login" in get_started_url)
 
@@ -104,7 +104,7 @@ class FrontEndRegisterPage(BaseCase):
         self.click('#create-listing-btn')
         # check to see we are on right page
         listing_url = self.get_current_url()
-        self.assert_equal(listing_url, 'http://127.0.0.1:8081/create_listing')
+        self.assert_equal(listing_url, base_url + '/create_listing')
         # now we can test the input feilds for create listing
         # we should see a account failed to be made message
         # as we pass in a title with special characters and space prefix
@@ -152,7 +152,7 @@ class FrontEndRegisterPage(BaseCase):
         self.click('#create-listing-btn')
         # check to see we are on right page
         listing_url = self.get_current_url()
-        self.assert_equal(listing_url, 'http://127.0.0.1:8081/create_listing')
+        self.assert_equal(listing_url, base_url + '/create_listing')
         # add a title that is longer than 80 characters
         self.type('#title-input', ' New title that is very long \
         and even longer on this line and so long that it is\
@@ -203,7 +203,7 @@ class FrontEndRegisterPage(BaseCase):
         # check to see we are on right page
         listing_url = self.get_current_url()
         self.assert_equal(
-            listing_url, 'http://127.0.0.1:8081/create_listing')
+            listing_url, base_url + '/create_listing')
         # generate description string that is outside sepcifaction length
         # shotgun testing requires random values ran multiple times
         # so we use for loop
@@ -278,7 +278,7 @@ class FrontEndRegisterPage(BaseCase):
         # check to see we are on right page
         listing_url = self.get_current_url()
         self.assert_equal(
-            listing_url, 'http://127.0.0.1:8081/create_listing')
+            listing_url, base_url + '/create_listing')
         # test random values where title is longer than descirption
         # test should pass here as we won't be able to make account with
         # title < descirption
@@ -333,7 +333,7 @@ class FrontEndRegisterPage(BaseCase):
         # check to see we are on right page
         listing_url = self.get_current_url()
         self.assert_equal(
-            listing_url, 'http://127.0.0.1:8081/create_listing')
+            listing_url, base_url + '/create_listing')
         # begin shotgun test
         # test should always fail since price < 10
         for i in range(0, 5):
@@ -399,7 +399,7 @@ class FrontEndRegisterPage(BaseCase):
         # check to see we are on right page
         listing_url = self.get_current_url()
         self.assert_equal(
-            listing_url, 'http://127.0.0.1:8081/create_listing')
+            listing_url, base_url + '/create_listing')
         for i in range(0, 5):
             title_string = get_random_string(random.randint(10, 15))
             for j in range(0, 5):
