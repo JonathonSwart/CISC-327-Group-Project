@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+<h1>{% block title %}Bookings Page{% endblock %}</h1>
+
+<body class="mx-auto">
+    {% block content %}
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <div class="login-section">
+                <h1>Current Available Listings</h1>
+                <hr>
+                {% for listing in listings %}
+                <form action="/reserving" method="post">
+                    <div class="display-bookings">
+
+
+                        <div class="sec">
+                            <h5><b>Title:</b></h5>
+                            <h6>{{ listing.title }}</h6>
+
+                        </div>
+
+
+                        <div class="sec">
+                            <h5><b>Description:</b></h5>
+                            <h6>{{ listing.description }}</h6>
+
+                        </div>
+
+
+                        <div class="sec">
+                            <h5><b>Cost:</b></h5>
+                            <h6>{{ listing.nightly_cost }}</h6>
+
+                        </div>
+
+                    </div>
+                    <div class="view">
+                        <input class="btn btn-primary" type="submit" id="text"
+                            value="Book this listing for your next get away now!">
+                        <input type="hidden" id="text" name="data" value="{{listing.id}}">
+                    </div>
+                    <hr>
+                </form>
+                {% endfor %}
+
+            </div>
+
+        </div>
+        <div class="col"></div>
+    </div>
+    {% endblock %}
+</body>

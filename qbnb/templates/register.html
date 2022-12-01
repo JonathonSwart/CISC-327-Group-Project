@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 <h1>{% block title %}Sign Up{% endblock %}</h1>
+
 <body class="mx-auto">
   {% block content %}
   <div class="row">
@@ -9,9 +10,13 @@
         <h1>Register</h1>
         <form action="/register" method="post">
           <input type="name" class="form-control" id="username-input" name="username" placeholder="Username">
+          <p class=description-p>Username: 2-20 characters, alphanumeric, can't start or end with spaces </p>
           <input type="name" class="form-control" id="email-input" name="email" aria-describedby="emailHelp"
             placeholder="Email">
+          <p class=description-p>Email: Must be Valid RFC 5322 Email Format</p>
           <input type="password" class="form-control" id="password-input" name="password" placeholder="Password">
+          <p class=description-p>Password: At least 6 characters, 1 Upper Case, 1 lower case, and 1 special character
+          </p>
           <button type="submit" id="login-btn" class="btn btn-primary btn-lg btn-block">Sign Up</button>
         </form>
         <a href="/login " type="button" id="register-btn" class="btn btn-secondary btn-lg btn-block">Back To Login</a>

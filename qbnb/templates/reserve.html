@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+<h1>{% block title %}Reserve a booking{% endblock %}</h1>
+
+<body class="mx-auto">
+    {% block content %}
+    <div class="row">
+
+        <div class="col"></div>
+
+        <div class="col">
+            <div class="login-section">
+
+                <h1>Reserve This Listing Today</h1>
+                <hr>
+                <div class="final">
+                    <form action="/reserved" method="post">
+                        <input type="date" name="datetime" value="2022-12-08">
+                        <input class="btn btn-primary" type="submit" name="submit" value="book this date">
+                        <input type="hidden" id="text" name="listing_id" value="{{listing_id}}">
+                        <input type="hidden" id="text" name="id" value="{{id}}">
+                    </form>
+                    <form action="/" class="go-home">
+                        <button class="btn btn-primary" id="home-btn" type="submit">Go Home</button>
+                    </form>
+                    <h3>{{ message }}</h3>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col"></div>
+
+
+
+    </div>
+
+
+    {% endblock %}
+</body>

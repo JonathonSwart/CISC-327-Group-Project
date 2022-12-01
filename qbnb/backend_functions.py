@@ -338,7 +338,7 @@ def create_booking(user_id, listing_id, booking_date):
     new_booking = Booking(user_id=user_id, listing_id=listing_id,
                           price=listing_object.nightly_cost,
                           date=booking_date)
+    user_object.balance -= listing_object.nightly_cost
     db.session.add(new_booking)
-
     db.session.commit()
     return True
