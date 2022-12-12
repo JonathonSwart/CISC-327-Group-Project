@@ -22,15 +22,18 @@ class FrontEndRegisterPage(BaseCase):
         self.click("#login-btn")
 
         balance = self.get_element("//*[@id='body']/div[2]/div[2]/div[1]/h4")
-        balance = int(balance.text)
+        balance = str(balance.text)
+        balance = int(balance[-2:])
 
         self.click("#view-booking-btn")
-        # prices = self.find_elements("#body > div:nth-child(2) > div:nth-child(2) > div > form:nth-child(3) > div.display-bookings > div:nth-child(3) > h6")
 
-        listings = self.find_elements("#body > div:nth-child(2) > div:nth-child(2) > div > form:nth-child(3)")
+        prices = self.find_elements("//*[@id='body']/div[2]/div[2]/div/form[*]/div[1]/div[3]/h6")
+        buttons = self.find_elements("//*[@id='text']")
 
-        for listing in listings:
-            price = self.find_element("#body > div:nth-child(2) > div:nth-child(2) > div > form:nth-child(3) > div.display-bookings > div:nth-child(3) > h6")
+        print(prices)
+        print(buttons)
+
+        for idx, price in enumerate(prices):
             price = int(price.text)
-            if balance > price:
-                self.click("#text")
+            if balance >= price:
+                self.click(buttons[idx])
