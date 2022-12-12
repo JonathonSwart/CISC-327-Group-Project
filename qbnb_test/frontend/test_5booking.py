@@ -31,15 +31,12 @@ class FrontEndRegisterPage(BaseCase):
         for idx, price in enumerate(prices):
             price = int(price.text)
             if balance >= price:
-                self.click('/html/body/div[2]/div[2]/div/form['+str(idx+1)+
-                ']/div[2]/input')
+                self.click('/html/body/div[2]/div[2]/div/form[' + str(idx+1) 
+                + ']/div[2]/input')
                 break
         
-        
-
         self.click("//*[@id='body']/div[2]/div[2]/div/div/form[1]/input[2]")
         self.assert_text('Hello')
-
 
         # Can not book a listing
         balance = self.get_element("//*[@id='body']/div[2]/div[2]/div[1]/h4")
@@ -54,8 +51,8 @@ class FrontEndRegisterPage(BaseCase):
         for idx, price in enumerate(prices):
             price = int(price.text)
             if balance < price:
-                self.click('/html/body/div[2]/div[2]/div/form['+str(idx+1)+
-                ']/div[2]/input')
+                self.click('/html/body/div[2]/div[2]/div/form[' + str(idx+1) 
+                + ']/div[2]/input')
                 break
         
         self.click("//*[@id='body']/div[2]/div[2]/div/div/form[1]/input[2]")
