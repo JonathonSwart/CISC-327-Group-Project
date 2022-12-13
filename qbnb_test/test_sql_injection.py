@@ -2,7 +2,7 @@ import sys
 from os import path
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))  # noqa
 from qbnb_test.conftest import pytest_sessionfinish, pytest_sessionstart  # noqa
-from qbnb.backend_functions import (create_listing, register)  # noqa
+from qbnb.backend_functions import (create_listing, register, create_booking)  # noqa
 from datetime import datetime  # noqa
 
 
@@ -66,5 +66,26 @@ def test_sql_injection_test():
             except Exception as error:
                 print("Exception Thrown for date_time payload: "
                       + str(error))
-    pytest_sessionfinish()
 
+            # SQL injection testing with the create booking function.
+
+            # Try to create a booking with payload on the user_id
+            try:
+                create_booking(payload, 1, datetime(2023, 1, 1))
+            except Exception as error:
+                print("Exception thrown for user_id payload: "
+                      + str(error))
+            # Try to create a booking with payload on the listing_id
+            try:
+                create_booking(1, payload, datetime(2023, 1, 1))
+            except Exception as error:
+                print("Exception thrown for listing_id payload: "
+                      + str(error))
+            # Try to create a booking with payload on the booking_date
+            try:
+                create_booking(1, 1, payload)
+            except Exception as error:
+                print("Exception thrown for user_id payload: "
+                      + str(error))
+
+    pytest_sessionfinish()
