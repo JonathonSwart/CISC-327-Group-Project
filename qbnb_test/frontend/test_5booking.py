@@ -31,7 +31,7 @@ class FrontEndRegisterPage(BaseCase):
         for idx, price in enumerate(prices):
             price = int(price.text)
             if balance >= price:
-                self.click('/html/body/div[2]/div[2]/div/form[' + str(idx+1)
+                self.click('/html/body/div[2]/div[2]/div/form[' + str(idx + 1)
                            + ']/div[2]/input')
                 break
 
@@ -51,7 +51,7 @@ class FrontEndRegisterPage(BaseCase):
         for idx, price in enumerate(prices):
             price = int(price.text)
             if balance < price:
-                self.click('/html/body/div[2]/div[2]/div/form[' + str(idx+1)
+                self.click('/html/body/div[2]/div[2]/div/form[' + str(idx + 1)
                            + ']/div[2]/input')
                 break
 
